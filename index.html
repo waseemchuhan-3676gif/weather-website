@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Check current weather, temperature, humidity, wind, rain conditions and 7-day weather forecasts for cities across Pakistan with WeatherHub Live.">
-<meta name="keywords" content="Weather forecast, weather today Pakistan, live weather Pakistan, 7 day weather forecast Pakistan, Multan weather, Lahore weather, Karachi weather, Islamabad weather, Bahawalpur weather, Faisalabad weather, Peshawar weather, Quetta weather">
+<meta name="keywords" content="Pakistan weather forecast, weather today Pakistan, live weather Pakistan, 7 day weather forecast Pakistan, Multan weather, Lahore weather, Karachi weather, Islamabad weather, Bahawalpur weather, Faisalabad weather, Peshawar weather, Quetta weather">
 <meta name="author" content="WeatherHub Live">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://weatherhublive.netlify.app/">
@@ -43,38 +43,38 @@
  integrity="sha256-p4NxAoJBhIINfQ3jWn9s7g8z0gQ6V6d9j5k9j5k9j5k=" crossorigin=""/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif}
-body{min-height:100vh;color:#fff;background:#0a3d69;padding:18px;position:relative;overflow-x:hidden;transition:background 1s ease}
-body:before{content:"";position:fixed;inset:0;z-index:-3;background:
-radial-gradient(ellipse 28% 18% at 15% 24%,rgba(255,255,255,.96) 0 18%,rgba(235,247,255,.78) 35%,transparent 68%),
-radial-gradient(ellipse 30% 20% at 87% 20%,rgba(255,255,255,.92) 0 20%,rgba(232,245,255,.70) 38%,transparent 70%),
-radial-gradient(ellipse 34% 22% at 58% 10%,rgba(255,255,255,.78) 0 17%,rgba(226,242,255,.52) 38%,transparent 70%),
-linear-gradient(180deg,#0878c5 0%,#3aa8df 34%,#8ed2ed 61%,#4f93a0 100%);
-transition:background 1s ease}
-body:after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:
-linear-gradient(180deg,rgba(2,28,54,.18),rgba(2,22,40,.12) 48%,rgba(4,31,35,.40)),
-radial-gradient(ellipse at 50% 100%,rgba(19,71,54,.58),transparent 55%);
-transition:background 1s ease}
-body.weather-clear:before{background:
-radial-gradient(circle at 17% 25%,#fff6bf 0 3%,rgba(255,224,104,.65) 8%,transparent 18%),
-radial-gradient(ellipse 30% 18% at 78% 20%,rgba(255,255,255,.94),transparent 68%),
-linear-gradient(180deg,#0878c5 0%,#4db9e7 48%,#8fd4e8 72%,#4d8e71 100%)}
-body.weather-cloudy:before{background:
-radial-gradient(ellipse 34% 22% at 25% 22%,rgba(255,255,255,.70),transparent 68%),
-radial-gradient(ellipse 38% 24% at 78% 24%,rgba(230,239,245,.78),transparent 70%),
-linear-gradient(180deg,#466f8d,#83a9bc 55%,#6d9290 100%)}
-body.weather-rain:before{background:
-repeating-linear-gradient(108deg,transparent 0 30px,rgba(205,232,255,.22) 31px 33px,transparent 34px 58px),
-linear-gradient(180deg,#203e5a,#55778c 55%,#526f72 100%)}
-body.weather-storm:before{background:
-radial-gradient(ellipse at 50% 18%,rgba(112,145,176,.35),transparent 42%),
-linear-gradient(180deg,#0b1d32,#2c4056 55%,#465b5d 100%)}
-body.weather-snow:before{background:
-radial-gradient(circle at 15% 18%,rgba(255,255,255,.8) 0 2px,transparent 3px),
-radial-gradient(circle at 72% 30%,rgba(255,255,255,.75) 0 2px,transparent 3px),
-linear-gradient(180deg,#6590ac,#b9d2df 60%,#dcebed 100%)}
-body.weather-fog:before{background:
-linear-gradient(180deg,#748b94,#b8c5c7 55%,#d2d8d6 100%)}
-.weather-bg-icon{position:fixed;right:4vw;top:12vh;z-index:-1;font-size:clamp(6rem,18vw,16rem);opacity:.16;filter:blur(1px);pointer-events:none;animation:weatherFloat 6s ease-in-out infinite}
+body{min-height:100vh;color:#fff;background:#0a3d69;padding:18px;position:relative;overflow-x:hidden;transition:background 1.2s ease}
+body:before{content:"";position:fixed;inset:0;z-index:-8;background:linear-gradient(180deg,#0878c5 0%,#3aa8df 38%,#8ed2ed 66%,#4f93a0 100%);transition:background 1.2s ease}
+body:after{content:"";position:fixed;inset:0;z-index:-7;pointer-events:none;background:linear-gradient(180deg,rgba(2,28,54,.12),rgba(2,22,40,.10) 48%,rgba(4,31,35,.40)),radial-gradient(ellipse at 50% 100%,rgba(19,71,54,.58),transparent 55%);transition:background 1.2s ease}
+.weather-scene{position:fixed;inset:0;z-index:-6;pointer-events:none;overflow:hidden;opacity:0;transition:opacity .8s ease}
+.weather-scene.active{opacity:1}
+.weather-sun{position:absolute;width:clamp(120px,18vw,260px);height:clamp(120px,18vw,260px);border-radius:50%;right:8%;top:8%;background:radial-gradient(circle,#fff9bd 0 10%,rgba(255,231,113,.85) 22%,rgba(255,207,67,.30) 48%,transparent 72%);filter:blur(1px);animation:sunPulse 4s ease-in-out infinite}
+.weather-cloud{position:absolute;width:300px;height:90px;border-radius:100px;background:rgba(255,255,255,.78);filter:blur(1px);box-shadow:70px 0 0 18px rgba(255,255,255,.72),140px 8px 0 8px rgba(255,255,255,.62),35px -28px 0 12px rgba(255,255,255,.75);animation:cloudDrift 28s linear infinite}
+.weather-cloud.c1{top:15%;left:-360px;transform:scale(1.15)}
+.weather-cloud.c2{top:31%;left:-520px;transform:scale(.72);opacity:.62;animation-duration:36s;animation-delay:-12s}
+.weather-cloud.c3{top:7%;left:-650px;transform:scale(.55);opacity:.48;animation-duration:44s;animation-delay:-25s}
+.rain-layer,.snow-layer{position:absolute;inset:-20% 0 0 0}
+.rain-drop{position:absolute;top:-15%;width:2px;height:42px;background:linear-gradient(to bottom,transparent,rgba(205,235,255,.78));transform:rotate(13deg);animation:rainDrop .7s linear infinite}
+.snow-flake{position:absolute;top:-10%;color:rgba(255,255,255,.85);font-size:18px;animation:snowFall linear infinite}
+.lightning-flash{position:absolute;inset:0;background:rgba(220,245,255,.75);opacity:0;animation:lightning 7s infinite}
+body.weather-clear:before{background:linear-gradient(180deg,#0878c5 0%,#4db9e7 48%,#8fd4e8 72%,#4d8e71 100%)}
+body.weather-cloudy:before{background:linear-gradient(180deg,#466f8d 0%,#83a9bc 55%,#6d9290 100%)}
+body.weather-rain:before{background:linear-gradient(180deg,#203e5a 0%,#55778c 55%,#526f72 100%)}
+body.weather-storm:before{background:linear-gradient(180deg,#0b1d32 0%,#2c4056 55%,#465b5d 100%)}
+body.weather-snow:before{background:linear-gradient(180deg,#6590ac 0%,#b9d2df 60%,#dcebed 100%)}
+body.weather-fog:before{background:linear-gradient(180deg,#748b94 0%,#b8c5c7 55%,#d2d8d6 100%)}
+body.weather-clear .weather-sun{display:block}
+body.weather-cloudy .weather-cloud{display:block}
+body.weather-rain .weather-cloud,body.weather-storm .weather-cloud{display:block}
+body.weather-rain .rain-layer,body.weather-storm .rain-layer{display:block}
+body.weather-storm .lightning-flash{display:block}
+body.weather-snow .weather-cloud,body.weather-snow .snow-layer{display:block}
+@keyframes sunPulse{0%,100%{transform:scale(1);opacity:.88}50%{transform:scale(1.07);opacity:1}}
+@keyframes cloudDrift{from{transform:translateX(0) scale(1.15)}to{transform:translateX(calc(100vw + 760px)) scale(1.15)}}
+@keyframes rainDrop{from{transform:translate3d(0,-10vh,0) rotate(13deg);opacity:0}15%{opacity:.8}to{transform:translate3d(-8vw,120vh,0) rotate(13deg);opacity:0}}
+@keyframes snowFall{from{transform:translate3d(0,-10vh,0) rotate(0deg);opacity:0}10%{opacity:.85}50%{transform:translate3d(3vw,50vh,0) rotate(120deg)}to{transform:translate3d(-4vw,120vh,0) rotate(260deg);opacity:0}}
+@keyframes lightning{0%,89%,94%,100%{opacity:0}90%{opacity:.85}91%{opacity:0}92%{opacity:.55}93%{opacity:0}}
+.weather-bg-icon{position:fixed;right:4vw;top:12vh;z-index:-5;font-size:clamp(6rem,18vw,16rem);opacity:.12;filter:blur(1px);pointer-events:none;animation:weatherFloat 6s ease-in-out infinite}
 @keyframes weatherFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 body.weather-rain .weather-bg-icon:after,body.weather-storm .weather-bg-icon:after{content:"\A\A\A\A\A";white-space:pre;position:absolute;left:20%;top:75%;width:70vw;height:100vh;background:repeating-linear-gradient(105deg,transparent 0 24px,rgba(190,225,255,.45) 25px 27px,transparent 28px 48px);animation:rainFall .55s linear infinite;opacity:.5}
 @keyframes rainFall{from{transform:translateY(-40px)}to{transform:translateY(80px)}}
@@ -109,10 +109,19 @@ nav button.active,nav button:hover{background:#fff;color:#173d76}
 .loader{display:none;text-align:center;padding:20px}.loader.show{display:block}
 footer{text-align:center;opacity:.65;padding:30px 0 10px;font-size:.85rem}
 @media(max-width:650px){body{padding:10px}header{align-items:flex-start;flex-direction:column}.search{flex-direction:column}.search .btn{width:100%}.weather-head{align-items:flex-start;flex-direction:column}.temp{font-size:3.8rem}.icon{font-size:3.5rem}#map{height:430px}}
-</style>
+.quick-pakistan{display:flex;flex-wrap:wrap;gap:8px}\n</style>
 </head>
 <body>
 <div id="weatherBgIcon" class="weather-bg-icon" aria-hidden="true">☁️</div>
+<div id="weatherScene" class="weather-scene" aria-hidden="true">
+  <div class="weather-sun"></div>
+  <div class="weather-cloud c1"></div>
+  <div class="weather-cloud c2"></div>
+  <div class="weather-cloud c3"></div>
+  <div id="rainLayer" class="rain-layer"></div>
+  <div id="snowLayer" class="snow-layer"></div>
+  <div class="lightning-flash"></div>
+</div>
 <div class="container">
 <header>
   <div class="brand"><i class="fas fa-cloud-sun"></i>WeatherHub <span>Live</span></div>
@@ -127,7 +136,7 @@ footer{text-align:center;opacity:.65;padding:30px 0 10px;font-size:.85rem}
 <section id="home" class="page active">
   <div class="hero">
     <h1>Pakistan Weather Forecast & Live Weather Updates</h1>
-    <p>Check current temperature, humidity, wind, rain conditions and a 7-day forecast for cities across Pakistan.</p>
+    <p>Check current temperature, humidity, wind, rain conditions and a 7-day forecast for cities across Pakistan.</p><div id="liveBackgroundStatus" style="margin-top:10px;font-size:.85rem;opacity:.82">🌤️ Live background follows the selected city</div>
   </div>
   <div class="search">
     <label for="cityInputHome" class="sr-only">Search city weather</label>
@@ -153,7 +162,22 @@ footer{text-align:center;opacity:.65;padding:30px 0 10px;font-size:.85rem}
 </section>
 
 <section id="cities" class="page" aria-label="World cities weather">
-  <div class="hero"><h1>World Cities</h1><p>Choose a city to instantly view its weather.</p></div>
+  <div class="hero"><h1>Pakistan Cities & World Cities</h1><p>Choose a city to instantly view its live weather.</p></div>
+  <div class="panel" style="margin-bottom:14px">
+    <h2 style="margin-top:0">🇵🇰 Popular Pakistan Destinations</h2>
+    <div class="quick-pakistan">
+      <button class="btn secondary" onclick="openCity('Murree')">Murree</button>
+      <button class="btn secondary" onclick="openCity('Naran')">Naran</button>
+      <button class="btn secondary" onclick="openCity('Gilgit')">Gilgit</button>
+      <button class="btn secondary" onclick="openCity('Skardu')">Skardu</button>
+      <button class="btn secondary" onclick="openCity('Hunza')">Hunza</button>
+      <button class="btn secondary" onclick="openCity('Fort Munro')">Fort Munro</button>
+      <button class="btn secondary" onclick="openCity('Swat')">Swat</button>
+      <button class="btn secondary" onclick="openCity('Kalam')">Kalam</button>
+      <button class="btn secondary" onclick="openCity('Gwadar')">Gwadar</button>
+      <button class="btn secondary" onclick="openCity('Muzaffarabad')">Muzaffarabad</button>
+    </div>
+  </div>
   <div class="cities" id="allCities"></div>
 </section>
 
@@ -178,13 +202,7 @@ footer{text-align:center;opacity:.65;padding:30px 0 10px;font-size:.85rem}
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
-const cities=[
- ['Multan','Pakistan'],['Lahore','Pakistan'],['Karachi','Pakistan'],['Islamabad','Pakistan'],
- ['Rawalpindi','Pakistan'],['Faisalabad','Pakistan'],['Peshawar','Pakistan'],['Quetta','Pakistan'],
- ['Sialkot','Pakistan'],['Bahawalpur','Pakistan'],['Dera Ghazi Khan','Pakistan'],['Hyderabad','Pakistan'],
- ['New York','United States'],['London','United Kingdom'],['Dubai','United Arab Emirates'],
- ['Riyadh','Saudi Arabia'],['Istanbul','Türkiye'],['Toronto','Canada'],['Sydney','Australia']
-];
+const cities=[["Multan","Punjab"],["Lahore","Punjab"],["Karachi","Sindh"],["Islamabad","ICT"],["Rawalpindi","Punjab"],["Faisalabad","Punjab"],["Peshawar","Khyber Pakhtunkhwa"],["Quetta","Balochistan"],["Sialkot","Punjab"],["Bahawalpur","Punjab"],["Dera Ghazi Khan","Punjab"],["Hyderabad","Sindh"],["Gujranwala","Punjab"],["Sargodha","Punjab"],["Sheikhupura","Punjab"],["Jhang","Punjab"],["Rahim Yar Khan","Punjab"],["Gujrat","Punjab"],["Kasur","Punjab"],["Okara","Punjab"],["Sahiwal","Punjab"],["Khanewal","Punjab"],["Vehari","Punjab"],["Lodhran","Punjab"],["Muzaffargarh","Punjab"],["Layyah","Punjab"],["Rajanpur","Punjab"],["Taunsa","Punjab"],["Kot Addu","Punjab"],["Mianwali","Punjab"],["Bhakkar","Punjab"],["Khushab","Punjab"],["Chakwal","Punjab"],["Jhelum","Punjab"],["Attock","Punjab"],["Taxila","Punjab"],["Wah Cantt","Punjab"],["Hafizabad","Punjab"],["Mandi Bahauddin","Punjab"],["Narowal","Punjab"],["Daska","Punjab"],["Wazirabad","Punjab"],["Chiniot","Punjab"],["Toba Tek Singh","Punjab"],["Burewala","Punjab"],["Mian Channu","Punjab"],["Chichawatni","Punjab"],["Arifwala","Punjab"],["Pakpattan","Punjab"],["Depalpur","Punjab"],["Nankana Sahib","Punjab"],["Shahkot","Punjab"],["Sangla Hill","Punjab"],["Murree","Punjab"],["Bhurban","Punjab"],["Patriata","Punjab"],["Fort Munro","Punjab"],["Kallar Kahar","Punjab"],["Khewra","Punjab"],["Mardan","Khyber Pakhtunkhwa"],["Mingora","Khyber Pakhtunkhwa"],["Swat","Khyber Pakhtunkhwa"],["Abbottabad","Khyber Pakhtunkhwa"],["Mansehra","Khyber Pakhtunkhwa"],["Haripur","Khyber Pakhtunkhwa"],["Kohat","Khyber Pakhtunkhwa"],["Bannu","Khyber Pakhtunkhwa"],["Dera Ismail Khan","Khyber Pakhtunkhwa"],["Nowshera","Khyber Pakhtunkhwa"],["Charsadda","Khyber Pakhtunkhwa"],["Swabi","Khyber Pakhtunkhwa"],["Karak","Khyber Pakhtunkhwa"],["Hangu","Khyber Pakhtunkhwa"],["Buner","Khyber Pakhtunkhwa"],["Dir","Khyber Pakhtunkhwa"],["Timergara","Khyber Pakhtunkhwa"],["Chitral","Khyber Pakhtunkhwa"],["Drosh","Khyber Pakhtunkhwa"],["Nathiagali","Khyber Pakhtunkhwa"],["Ayubia","Khyber Pakhtunkhwa"],["Naran","Khyber Pakhtunkhwa"],["Kaghan","Khyber Pakhtunkhwa"],["Shogran","Khyber Pakhtunkhwa"],["Malam Jabba","Khyber Pakhtunkhwa"],["Kalam","Khyber Pakhtunkhwa"],["Bahrain","Khyber Pakhtunkhwa"],["Batkhela","Khyber Pakhtunkhwa"],["Parachinar","Khyber Pakhtunkhwa"],["Sukkur","Sindh"],["Larkana","Sindh"],["Nawabshah","Sindh"],["Mirpur Khas","Sindh"],["Jacobabad","Sindh"],["Shikarpur","Sindh"],["Khairpur","Sindh"],["Dadu","Sindh"],["Thatta","Sindh"],["Badin","Sindh"],["Tando Adam","Sindh"],["Tando Allahyar","Sindh"],["Umerkot","Sindh"],["Matiari","Sindh"],["Kandhkot","Sindh"],["Kashmore","Sindh"],["Ghotki","Sindh"],["Sehwan","Sindh"],["Kotri","Sindh"],["Jamshoro","Sindh"],["Mirpur Mathelo","Sindh"],["Sanghar","Sindh"],["Shahdadkot","Sindh"],["Gwadar","Balochistan"],["Turbat","Balochistan"],["Khuzdar","Balochistan"],["Chaman","Balochistan"],["Sibi","Balochistan"],["Zhob","Balochistan"],["Loralai","Balochistan"],["Kalat","Balochistan"],["Nushki","Balochistan"],["Dalbandin","Balochistan"],["Hub","Balochistan"],["Mastung","Balochistan"],["Pishin","Balochistan"],["Killa Saifullah","Balochistan"],["Killa Abdullah","Balochistan"],["Kharan","Balochistan"],["Panjgur","Balochistan"],["Awaran","Balochistan"],["Dera Bugti","Balochistan"],["Pasni","Balochistan"],["Ormara","Balochistan"],["Jiwani","Balochistan"],["Gilgit","Gilgit-Baltistan"],["Skardu","Gilgit-Baltistan"],["Hunza","Gilgit-Baltistan"],["Chilas","Gilgit-Baltistan"],["Astore","Gilgit-Baltistan"],["Khaplu","Gilgit-Baltistan"],["Gupis","Gilgit-Baltistan"],["Nagar","Gilgit-Baltistan"],["Danyor","Gilgit-Baltistan"],["Shigar","Gilgit-Baltistan"],["Ghizer","Gilgit-Baltistan"],["Muzaffarabad","Azad Jammu and Kashmir"],["Mirpur","Azad Jammu and Kashmir"],["Rawalakot","Azad Jammu and Kashmir"],["Kotli","Azad Jammu and Kashmir"],["Bagh","Azad Jammu and Kashmir"],["Bhimber","Azad Jammu and Kashmir"],["Athmuqam","Azad Jammu and Kashmir"],["Neelum Valley","Azad Jammu and Kashmir"],["Dhirkot","Azad Jammu and Kashmir"],["Hajira","Azad Jammu and Kashmir"],["Abbaspur","Azad Jammu and Kashmir"],["New York","United States"],["London","United Kingdom"],["Dubai","United Arab Emirates"],["Riyadh","Saudi Arabia"],["Istanbul","Türkiye"],["Toronto","Canada"],["Sydney","Australia"]];
 const icons={0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌧️',61:'🌧️',63:'🌧️',65:'🌧️',66:'🌨️',67:'🌨️',71:'❄️',73:'❄️',75:'❄️',77:'❄️',80:'🌦️',81:'🌧️',82:'⛈️',85:'🌨️',86:'🌨️',95:'⛈️',96:'⛈️',99:'⛈️'};
 const desc={0:'Clear sky',1:'Mainly clear',2:'Partly cloudy',3:'Overcast',45:'Foggy',48:'Foggy',51:'Light drizzle',53:'Moderate drizzle',55:'Dense drizzle',61:'Slight rain',63:'Moderate rain',65:'Heavy rain',66:'Freezing rain',67:'Heavy freezing rain',71:'Slight snow',73:'Moderate snow',75:'Heavy snow',77:'Snow grains',80:'Rain showers',81:'Moderate rain showers',82:'Violent rain showers',85:'Snow showers',86:'Heavy snow showers',95:'Thunderstorm',96:'Thunderstorm with hail',99:'Thunderstorm with heavy hail'};
 let map,marker;
@@ -212,18 +230,44 @@ async function getCityWeather(city){
  const g=await geocode(city); const w=await weatherAt(g.latitude,g.longitude);
  return {g,w};
 }
+function buildWeatherParticles(){
+  const rain=document.getElementById('rainLayer');
+  const snow=document.getElementById('snowLayer');
+  if(!rain || !snow) return;
+  rain.innerHTML=''; snow.innerHTML='';
+  for(let i=0;i<95;i++){
+    const d=document.createElement('span');
+    d.className='rain-drop';
+    d.style.left=(Math.random()*105)+'%';
+    d.style.animationDelay=(-Math.random()*1.4)+'s';
+    d.style.animationDuration=(.45+Math.random()*.55)+'s';
+    rain.appendChild(d);
+  }
+  for(let i=0;i<45;i++){
+    const s=document.createElement('span');
+    s.className='snow-flake';
+    s.textContent=Math.random()>.45?'•':'❄';
+    s.style.left=(Math.random()*105)+'%';
+    s.style.animationDelay=(-Math.random()*8)+'s';
+    s.style.animationDuration=(5+Math.random()*8)+'s';
+    s.style.fontSize=(10+Math.random()*16)+'px';
+    snow.appendChild(s);
+  }
+}
+
 function setWeatherBackground(code){
- const body=document.body;
- body.classList.remove('weather-clear','weather-cloudy','weather-rain','weather-storm','weather-snow','weather-fog');
- let cls='weather-cloudy', icon='☁️';
- if(code===0){cls='weather-clear';icon='☀️'}
- else if([1,2,3].includes(code)){cls='weather-cloudy';icon=code===1?'🌤️':code===2?'⛅':'☁️'}
- else if([45,48].includes(code)){cls='weather-fog';icon='🌫️'}
- else if([51,53,55,61,63,65,80,81].includes(code)){cls='weather-rain';icon='🌧️'}
- else if([82,95,96,99].includes(code)){cls='weather-storm';icon='⛈️'}
- else if([66,67,71,73,75,77,85,86].includes(code)){cls='weather-snow';icon=[66,67].includes(code)?'🌨️':'❄️'}
- body.classList.add(cls);
- const bg=document.getElementById('weatherBgIcon'); if(bg) bg.textContent=icon;
+  const body=document.body;
+  body.classList.remove('weather-clear','weather-cloudy','weather-rain','weather-storm','weather-snow','weather-fog');
+  let cls='weather-cloudy', icon='☁️';
+  if(code===0){cls='weather-clear';icon='☀️'}
+  else if([1,2,3].includes(code)){cls='weather-cloudy';icon=code===1?'🌤️':code===2?'⛅':'☁️'}
+  else if([45,48].includes(code)){cls='weather-fog';icon='🌫️'}
+  else if([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(code)){cls='weather-rain';icon='🌧️'}
+  else if([95,96,99].includes(code)){cls='weather-storm';icon='⛈️'}
+  else if([71,73,75,77,85,86].includes(code)){cls='weather-snow';icon='❄️'}
+  body.classList.add(cls);
+  const bg=document.getElementById('weatherBgIcon'); if(bg) bg.textContent=icon;
+  buildWeatherParticles();
 }
 
 function renderWeather(g,w){
@@ -254,7 +298,7 @@ async function loadHome(city='Multan'){
 }
 function cityCards(){
  const make=cities.map(c=>`<div class="card city" onclick="openCity('${c[0].replace(/'/g,"\\'")}')"><i class="fas fa-location-dot"></i><strong>${c[0]}</strong><small>${c[1]}</small></div>`).join('');
- document.getElementById('homeCities').innerHTML=cities.slice(0,12).map(c=>`<div class="card city" onclick="openCity('${c[0]}')"><i class="fas fa-location-dot"></i><strong>${c[0]}</strong><small>${c[1]}</small></div>`).join('');
+ document.getElementById('homeCities').innerHTML=cities.filter(c=>c[1]!=='United States'&&c[1]!=='United Kingdom'&&c[1]!=='United Arab Emirates'&&c[1]!=='Saudi Arabia'&&c[1]!=='Türkiye'&&c[1]!=='Canada'&&c[1]!=='Australia').slice(0,18).map(c=>`<div class="card city" onclick="openCity('${c[0]}')"><i class="fas fa-location-dot"></i><strong>${c[0]}</strong><small>${c[1]}</small></div>`).join('');
  document.getElementById('allCities').innerHTML=make;
 }
 async function useLocation(){
