@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Check current weather, temperature, humidity, wind, rain conditions and 7-day weather forecasts for cities across Pakistan with WeatherHub Live.">
-<meta name="keywords" content="Pakistan weather forecast, weather today Pakistan, live weather Pakistan, 7 day weather forecast Pakistan, Multan weather, Lahore weather, Karachi weather, Islamabad weather, Bahawalpur weather, Faisalabad weather, Peshawar weather, Quetta weather">
+<meta name="keywords" content="Weather forecast, weather today Pakistan, live weather Pakistan, 7 day weather forecast Pakistan, Multan weather, Lahore weather, Karachi weather, Islamabad weather, Bahawalpur weather, Faisalabad weather, Peshawar weather, Quetta weather">
 <meta name="author" content="WeatherHub Live">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://weatherhublive.netlify.app/">
@@ -43,28 +43,62 @@
  integrity="sha256-p4NxAoJBhIINfQ3jWn9s7g8z0gQ6V6d9j5k9j5k9j5k=" crossorigin=""/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif}
-body{min-height:100vh;color:#fff;background:linear-gradient(135deg,#102a56,#245ea8 50%,#7150a8);padding:18px}
-button,input{font:inherit}.container{max-width:1180px;margin:auto}
+body{min-height:100vh;color:#fff;background:#0a3d69;padding:18px;position:relative;overflow-x:hidden;transition:background 1s ease}
+body:before{content:"";position:fixed;inset:0;z-index:-3;background:
+radial-gradient(ellipse 28% 18% at 15% 24%,rgba(255,255,255,.96) 0 18%,rgba(235,247,255,.78) 35%,transparent 68%),
+radial-gradient(ellipse 30% 20% at 87% 20%,rgba(255,255,255,.92) 0 20%,rgba(232,245,255,.70) 38%,transparent 70%),
+radial-gradient(ellipse 34% 22% at 58% 10%,rgba(255,255,255,.78) 0 17%,rgba(226,242,255,.52) 38%,transparent 70%),
+linear-gradient(180deg,#0878c5 0%,#3aa8df 34%,#8ed2ed 61%,#4f93a0 100%);
+transition:background 1s ease}
+body:after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:
+linear-gradient(180deg,rgba(2,28,54,.18),rgba(2,22,40,.12) 48%,rgba(4,31,35,.40)),
+radial-gradient(ellipse at 50% 100%,rgba(19,71,54,.58),transparent 55%);
+transition:background 1s ease}
+body.weather-clear:before{background:
+radial-gradient(circle at 17% 25%,#fff6bf 0 3%,rgba(255,224,104,.65) 8%,transparent 18%),
+radial-gradient(ellipse 30% 18% at 78% 20%,rgba(255,255,255,.94),transparent 68%),
+linear-gradient(180deg,#0878c5 0%,#4db9e7 48%,#8fd4e8 72%,#4d8e71 100%)}
+body.weather-cloudy:before{background:
+radial-gradient(ellipse 34% 22% at 25% 22%,rgba(255,255,255,.70),transparent 68%),
+radial-gradient(ellipse 38% 24% at 78% 24%,rgba(230,239,245,.78),transparent 70%),
+linear-gradient(180deg,#466f8d,#83a9bc 55%,#6d9290 100%)}
+body.weather-rain:before{background:
+repeating-linear-gradient(108deg,transparent 0 30px,rgba(205,232,255,.22) 31px 33px,transparent 34px 58px),
+linear-gradient(180deg,#203e5a,#55778c 55%,#526f72 100%)}
+body.weather-storm:before{background:
+radial-gradient(ellipse at 50% 18%,rgba(112,145,176,.35),transparent 42%),
+linear-gradient(180deg,#0b1d32,#2c4056 55%,#465b5d 100%)}
+body.weather-snow:before{background:
+radial-gradient(circle at 15% 18%,rgba(255,255,255,.8) 0 2px,transparent 3px),
+radial-gradient(circle at 72% 30%,rgba(255,255,255,.75) 0 2px,transparent 3px),
+linear-gradient(180deg,#6590ac,#b9d2df 60%,#dcebed 100%)}
+body.weather-fog:before{background:
+linear-gradient(180deg,#748b94,#b8c5c7 55%,#d2d8d6 100%)}
+.weather-bg-icon{position:fixed;right:4vw;top:12vh;z-index:-1;font-size:clamp(6rem,18vw,16rem);opacity:.16;filter:blur(1px);pointer-events:none;animation:weatherFloat 6s ease-in-out infinite}
+@keyframes weatherFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+body.weather-rain .weather-bg-icon:after,body.weather-storm .weather-bg-icon:after{content:"\A\A\A\A\A";white-space:pre;position:absolute;left:20%;top:75%;width:70vw;height:100vh;background:repeating-linear-gradient(105deg,transparent 0 24px,rgba(190,225,255,.45) 25px 27px,transparent 28px 48px);animation:rainFall .55s linear infinite;opacity:.5}
+@keyframes rainFall{from{transform:translateY(-40px)}to{transform:translateY(80px)}}
+button,input{font:inherit}.container{max-width:1180px;margin:auto}.container:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 100%,rgba(16,58,38,.45),transparent 48%)}
 header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0 24px}
-.brand{font-size:1.5rem;font-weight:800}.brand i{margin-right:8px}
+.brand{font-size:1.55rem;font-weight:800;letter-spacing:-.4px;text-shadow:0 2px 12px rgba(0,0,0,.18)}.brand i{margin-right:8px;color:#ffd84d}.brand span{color:#39a9ff}
 nav{display:flex;gap:8px;flex-wrap:wrap}
 nav button{border:0;background:rgba(255,255,255,.12);color:#fff;padding:10px 14px;border-radius:12px;cursor:pointer}
 nav button.active,nav button:hover{background:#fff;color:#173d76}
 .page{display:none}.page.active{display:block;animation:fade .3s ease}
 @keyframes fade{from{opacity:.2;transform:translateY(8px)}to{opacity:1;transform:none}}
-.hero{text-align:center;margin:20px auto 28px}.hero h1{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:8px}
-.hero p{opacity:.85}.search{display:flex;gap:10px;background:rgba(255,255,255,.14);padding:8px;border-radius:18px;backdrop-filter:blur(12px);margin-bottom:20px}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.search input{flex:1;border:0;outline:0;background:transparent;color:#fff;padding:14px 16px}.search input::placeholder{color:#dce7ff}
-.btn{border:0;border-radius:12px;padding:12px 18px;background:#fff;color:#163b74;font-weight:700;cursor:pointer}
+.hero{text-align:center;margin:34px auto 28px}.hero h1{font-size:clamp(2rem,5vw,3.35rem);margin-bottom:10px;text-shadow:0 4px 18px rgba(0,0,0,.28)}
+.hero p{opacity:.85}.search{display:flex;gap:10px;background:rgba(255,255,255,.94);padding:7px;border-radius:16px;backdrop-filter:blur(12px);margin-bottom:20px;box-shadow:0 12px 30px rgba(0,0,0,.18)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.search input{flex:1;border:0;outline:0;background:transparent;color:#183b5b;padding:14px 16px}.search input::placeholder{color:#7b8b98}
+.btn{border:0;border-radius:12px;padding:12px 18px;background:#087df0;color:#fff;font-weight:700;cursor:pointer;box-shadow:0 5px 16px rgba(0,93,190,.28)}
 .btn.secondary{background:rgba(255,255,255,.15);color:#fff}.btn:hover{transform:translateY(-1px)}
-.panel{background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:22px;backdrop-filter:blur(12px);box-shadow:0 12px 35px rgba(0,0,0,.14)}
+.panel{background:linear-gradient(135deg,rgba(5,31,55,.86),rgba(8,55,82,.70));border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:22px;backdrop-filter:blur(14px);box-shadow:0 18px 45px rgba(0,0,0,.24)}
 .weather-head{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:18px}
 .location{font-size:1.55rem;font-weight:700}.muted{opacity:.75}
 .temp-row{display:flex;align-items:center;gap:20px}.temp{font-size:5rem;font-weight:300;line-height:1}.icon{font-size:4.5rem}
 .desc{font-size:1.2rem;margin:12px 0 22px;text-transform:capitalize}
 .details,.forecast-grid,.cities{display:grid;gap:12px}
 .details{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
-.card{background:rgba(255,255,255,.1);border-radius:16px;padding:15px;text-align:center}.card i{font-size:1.4rem;margin-bottom:7px}.label{font-size:.82rem;opacity:.75}.value{font-size:1.1rem;font-weight:700;margin-top:4px}
+.card{background:linear-gradient(135deg,rgba(32,76,105,.76),rgba(15,49,72,.72));border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:15px;text-align:center;box-shadow:inset 0 1px rgba(255,255,255,.05)}.card i{font-size:1.4rem;margin-bottom:7px;color:#45a9ff}.label{font-size:.82rem;opacity:.75}.value{font-size:1.1rem;font-weight:700;margin-top:4px}
 .forecast-grid{grid-template-columns:repeat(auto-fit,minmax(105px,1fr));margin-top:15px}
 .forecast-card{padding:15px 10px;text-align:center;background:rgba(255,255,255,.1);border-radius:16px}.forecast-card .fi{font-size:2rem;margin:8px}.hi{font-weight:700}.lo{opacity:.7;font-size:.9rem}
 .section-title{margin:26px 0 12px;font-size:1.35rem}
@@ -78,9 +112,10 @@ footer{text-align:center;opacity:.65;padding:30px 0 10px;font-size:.85rem}
 </style>
 </head>
 <body>
+<div id="weatherBgIcon" class="weather-bg-icon" aria-hidden="true">☁️</div>
 <div class="container">
 <header>
-  <div class="brand"><i class="fas fa-cloud-sun"></i>WeatherHub</div>
+  <div class="brand"><i class="fas fa-cloud-sun"></i>WeatherHub <span>Live</span></div>
   <nav>
     <button class="nav active" data-page="home">Home</button>
     <button class="nav" data-page="weather">Weather</button>
@@ -137,7 +172,7 @@ footer{text-align:center;opacity:.65;padding:30px 0 10px;font-size:.85rem}
 </section>
 
 <div class="loader" id="loader"><i class="fas fa-spinner fa-spin"></i> Loading weather data...</div>
-<footer>Powered by Open-Meteo API • Map by OpenStreetMap & Leaflet • Free and no weather API key required</footer>
+<footer>WeatherHub Live • Powered by Open-Meteo API • Map by OpenStreetMap & Leaflet</footer>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -177,8 +212,23 @@ async function getCityWeather(city){
  const g=await geocode(city); const w=await weatherAt(g.latitude,g.longitude);
  return {g,w};
 }
+function setWeatherBackground(code){
+ const body=document.body;
+ body.classList.remove('weather-clear','weather-cloudy','weather-rain','weather-storm','weather-snow','weather-fog');
+ let cls='weather-cloudy', icon='☁️';
+ if(code===0){cls='weather-clear';icon='☀️'}
+ else if([1,2,3].includes(code)){cls='weather-cloudy';icon=code===1?'🌤️':code===2?'⛅':'☁️'}
+ else if([45,48].includes(code)){cls='weather-fog';icon='🌫️'}
+ else if([51,53,55,61,63,65,80,81].includes(code)){cls='weather-rain';icon='🌧️'}
+ else if([82,95,96,99].includes(code)){cls='weather-storm';icon='⛈️'}
+ else if([66,67,71,73,75,77,85,86].includes(code)){cls='weather-snow';icon=[66,67].includes(code)?'🌨️':'❄️'}
+ body.classList.add(cls);
+ const bg=document.getElementById('weatherBgIcon'); if(bg) bg.textContent=icon;
+}
+
 function renderWeather(g,w){
  const c=w.current,d=w.daily;
+ setWeatherBackground(c.weather_code);
  let days=d.time.map((t,i)=>`<div class="forecast-card"><div><b>${i===0?'Today':new Date(t).toLocaleDateString('en-US',{weekday:'short'})}</b></div><div class="fi">${icons[d.weather_code[i]]||'🌡️'}</div><div class="hi">${Math.round(d.temperature_2m_max[i])}°</div><div class="lo">${Math.round(d.temperature_2m_min[i])}°</div></div>`).join('');
  return `<div class="panel"><div class="weather-head"><div><div class="location">${g.name}, ${g.country||''}</div><div class="muted">${g.admin1||''}</div></div><div class="muted">${new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}</div></div>
  <div class="temp-row"><div class="temp">${Math.round(c.temperature_2m)}°</div><div class="icon">${icons[c.weather_code]||'🌡️'}</div></div>
