@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GWS10TQS59"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GWS10TQS59');
+</script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Live Multan and Fort Munro weather updates: current temperature, feels-like temperature, humidity, wind, UV index, air quality, hourly weather and 7-day forecasts. Check Fort Munro weather today, tomorrow and weekly forecast in Punjab, Pakistan.">
-<meta name="keywords" content="Multan weather, Multan weather today, Multan weather forecast, Multan temperature, Multan hourly weather, Multan 7 day weather forecast, Multan air quality, Multan AQI, Pakistan weather, Pakistan weather forecast, live weather Pakistan, Fort Munro weather, Fort Munro weather today, Fort Munro weather forecast, Fort Munro temperature, Fort Munro hourly weather, Fort Munro weather tomorrow, Fort Munro 7 day weather forecast, Fort Munro air quality, Fort Munro AQI, Fort Munro Punjab weather, Fort Munro Dera Ghazi Khan weather, Fort Munro Pakistan weather, Fort Munro live weather, Fourt manru, Fourtmanru, Fourtmanro, Fourt manro, Fortmenro, Fort menro, Fourtmenro, Fourt menru, Fourtmenru, Fortmanro Punjab, Fortmanro Balochistan, Fortmanru Punjab, Fortmanru Balochistan, Fourtmanro Punjab, Fourtmanro Balochistan, Fourtmanru Punjab, Fourtmanru Balochistan, Fort Munro Punjab, Fort Munro Balochistan, Fort Manro, Fortmanru, Fortmanro, Fortmunro, Fort Munroo, Fort Munru, Fort Murno, Fort Monro, Fort Monru, Fort Menro, Fort Menru, Fort Manroo, Fort Manro weather, Fortmanro weather, Fortmanru weather, Multaan weather, Miltan weather, Multn weather, Multon weather, Multan Pakistan weather">
+<meta name="keywords" content="Multan weather, Multan weather today, Multan weather forecast, Multan temperature, Multan hourly weather, Multan 7 day weather forecast, Multan AQI, Multan air quality, Fortmanro weather, Fortmanro weather today, Fortmanro weather forecast, Fortmanro temperature, Fortmanro hourly weather, Fortmanro weather tomorrow, Fortmanro 7 day weather forecast, Fortmanro AQI, Fortmanro air quality, Fortmanro Punjab weather, Fortmanro Dera Ghazi Khan weather, Fortmanro Pakistan weather">
 <meta name="author" content="WeatherHub Live">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://weatherhublive.netlify.app/">
@@ -36,7 +45,7 @@
   }
 }
 </script>
-<title>WeatherHub Live • Multan & Fort Munro Weather Forecast, AQI & Live Weather</title>
+<title>Multan Weather & Fortmanro Weather Today | 7-Day Forecast, AQI</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
  integrity="sha256-p4NxAoJBhIINfQ3jWn9s7g8z0gQ6V6d9j5k9j5k9j5k=" crossorigin=""/>
@@ -197,13 +206,14 @@ footer{text-align:center;opacity:.65;padding:30px 0 10px;font-size:.85rem}
 }
 </script>
 
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GWS10TQS59"></script>
+
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-GWS10TQS59');
+const FORTMANRO_VARIANTS = ["fort manru","fortmanru","fourt manru","fourtmanru","fort manro","fortmanro","fourt manro","fourtmanro","fort munro","fortmunro","fort munroo","fort munru","fort murno","fort monro","fort monru","fort menro","fort menru","fort manroo"];
+function normalizeFortmanroQuery(value){
+  const q=(value||"").trim().toLowerCase().replace(/\s+/g," ");
+  if(FORTMANRO_VARIANTS.includes(q) || q.includes("fortmanru") || q.includes("fortmanro") || q.includes("fourtmanru") || q.includes("fourtmanro") || q.includes("fort munro") || q.includes("fort manru")) return "Fortmanro";
+  return value;
+}
 </script>
 
 </head>
