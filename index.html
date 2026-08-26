@@ -3,12 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="WeatherHub Live provides current weather, 7-day forecasts and live weather updates for Multan, Pakistan and cities around the world.">
-<meta name="keywords" content="Multan weather, Multan weather today, weather in Multan, Multan weather forecast, Multan temperature, Multan 7 day weather forecast, Pakistan weather, weather today, live weather">
+<meta name="description" content="Live Multan and Fort Manro weather updates: current temperature, feels-like temperature, humidity, wind, UV index, air quality, hourly weather and 7-day forecasts. Check Fort Munro weather today, tomorrow and weekly forecast in Punjab, Pakistan.">
+<meta name="keywords" content="Multan weather, Multan weather today, Multan weather forecast, Multan temperature, Multan hourly weather, Multan 7 day weather forecast, Multan air quality, Multan AQI, Pakistan weather, Pakistan weather forecast, live weather Pakistan, Fort Munro weather, Fort Munro weather today, Fort Munro weather forecast, Fort Munro temperature, Fort Munro hourly weather, Fort Munro weather tomorrow, Fort Munro 7 day weather forecast, Fort Munro air quality, Fort Munro AQI, Fort Munro Punjab weather, Fort Munro Dera Ghazi Khan weather, Fort Munro Pakistan weather, Fort Munro live weather">
 <meta name="author" content="WeatherHub Live">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://weatherhublive.netlify.app/">
 <meta name="theme-color" content="#102a56">
+<meta name="color-scheme" content="dark">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="application-name" content="WeatherHub Live">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://weatherhublive.netlify.app/">
@@ -18,7 +20,7 @@
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Multan Weather Today & 7-Day Forecast | WeatherHub">
-<meta name="twitter:description" content="Check Multan weather today, current temperature, rain chance and 7-day forecast with WeatherHub Live.">
+<meta name="twitter:description" content="Check Multan weather today, live temperature, air quality, hourly weather and 7-day forecast with WeatherHub Live.">
 
 <script type="application/ld+json">
 {
@@ -34,7 +36,7 @@
   }
 }
 </script>
-<title>Multan Weather Today & 7-Day Forecast | WeatherHub</title>
+<title>WeatherHub Live • Multan & Fort Manro Weather Forecast, AQI & Live Weather</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
  integrity="sha256-p4NxAoJBhIINfQ3jWn9s7g8z0gQ6V6d9j5k9j5k9j5k=" crossorigin=""/>
@@ -43,19 +45,20 @@
 body{min-height:100vh;color:#fff;background:#0b1f3a;padding:18px;position:relative;overflow-x:hidden;transition:background 1.2s ease}
 /* Dynamic live weather background: changes with the selected city's conditions and day/night */
 body:before{content:"";position:fixed;inset:0;z-index:-8;background:
-radial-gradient(circle at 78% 16%,rgba(255,223,116,.34),transparent 18%),
-linear-gradient(135deg,#173f70 0%,#1678a8 42%,#1e9b8a 100%);background-size:cover;background-position:center;transition:background 1.4s ease,filter 1.4s ease,transform 8s ease;animation:skyBreath 12s ease-in-out infinite alternate}
+radial-gradient(circle at 78% 12%,rgba(56,189,248,.18),transparent 24%),
+linear-gradient(135deg,#071426 0%,#0b2742 48%,#123b4a 100%);
+background-size:cover;background-position:center;transition:background 1.4s ease,filter 1.4s ease,transform 8s ease;animation:skyBreath 12s ease-in-out infinite alternate}
 body:after{content:"";position:fixed;inset:0;z-index:-7;pointer-events:none;background:
 radial-gradient(circle at 50% 115%,rgba(22,101,72,.45),transparent 48%),
 linear-gradient(180deg,rgba(2,18,40,.08),rgba(2,20,38,.12) 48%,rgba(2,15,28,.58) 100%);transition:background 1.4s ease}
 @keyframes skyBreath{from{transform:scale(1)}to{transform:scale(1.025)}}
-body.weather-clear:before{background:radial-gradient(circle at 78% 16%,rgba(255,239,145,.82),transparent 17%),linear-gradient(135deg,#0874d1 0%,#26b9e8 48%,#68d391 100%);filter:saturate(1.12) brightness(1.05)}
-body.weather-cloudy:before{background:linear-gradient(135deg,#263d58 0%,#587a93 48%,#8fa6ad 100%);filter:saturate(.9) brightness(.98)}
-body.weather-rain:before{background:linear-gradient(135deg,#102b48 0%,#28566f 45%,#3f7181 100%);filter:saturate(.82) brightness(.76)}
-body.weather-storm:before{background:radial-gradient(circle at 68% 28%,rgba(163,191,214,.18),transparent 20%),linear-gradient(135deg,#071225 0%,#18283d 48%,#394a58 100%);filter:saturate(.65) brightness(.55)}
-body.weather-snow:before{background:radial-gradient(circle at 78% 18%,rgba(255,255,255,.42),transparent 15%),linear-gradient(135deg,#56758c 0%,#a6c8d9 52%,#e5f4f7 100%);filter:saturate(.72) brightness(1.08)}
-body.weather-fog:before{background:linear-gradient(135deg,#60747b 0%,#a8b8b9 48%,#d3dad5 100%);filter:saturate(.55) brightness(1.04)}
-body.weather-night:before{background:radial-gradient(circle at 78% 17%,rgba(255,255,220,.75) 0 1.2%,rgba(255,255,220,.15) 2%,transparent 9%),radial-gradient(circle at 20% 20%,rgba(255,255,255,.45) 0 1px,transparent 2px),radial-gradient(circle at 42% 12%,rgba(255,255,255,.38) 0 1px,transparent 2px),linear-gradient(135deg,#030817 0%,#0b1d3c 48%,#17355c 100%);filter:saturate(.95) brightness(.78)}
+body.weather-clear:before{background:radial-gradient(circle at 78% 16%,rgba(255,226,128,.58),transparent 18%),linear-gradient(135deg,#08264a 0%,#0d5f87 52%,#0f766e 100%);filter:saturate(.96) brightness(1.02)}
+body.weather-cloudy:before{background:linear-gradient(135deg,#182b40 0%,#3d596e 50%,#71838d 100%);filter:saturate(.78) brightness(.95)}
+body.weather-rain:before{background:linear-gradient(135deg,#071a31 0%,#16415e 48%,#245d69 100%);filter:saturate(.82) brightness(.78)}
+body.weather-storm:before{background:radial-gradient(circle at 68% 28%,rgba(148,163,184,.12),transparent 20%),linear-gradient(135deg,#030817 0%,#101d35 48%,#26364a 100%);filter:saturate(.55) brightness(.52)}
+body.weather-snow:before{background:radial-gradient(circle at 78% 18%,rgba(255,255,255,.30),transparent 15%),linear-gradient(135deg,#29465e 0%,#6d91a4 52%,#c9dce4 100%);filter:saturate(.62) brightness(1.02)}
+body.weather-fog:before{background:linear-gradient(135deg,#394b54 0%,#71848a 48%,#aab8b8 100%);filter:saturate(.48) brightness(.98)}
+body.weather-night:before{background:radial-gradient(circle at 78% 17%,rgba(224,242,254,.55) 0 1.2%,rgba(224,242,254,.12) 2%,transparent 9%),radial-gradient(circle at 20% 20%,rgba(255,255,255,.38) 0 1px,transparent 2px),radial-gradient(circle at 42% 12%,rgba(255,255,255,.30) 0 1px,transparent 2px),linear-gradient(135deg,#020711 0%,#08182b 52%,#102a3d 100%);filter:brightness(.9)}
 body.weather-night.weather-rain:before{background:linear-gradient(135deg,#020916 0%,#102b45 48%,#20485d 100%);filter:brightness(.62)}
 body.weather-night.weather-storm:before{background:linear-gradient(135deg,#01040c 0%,#0a1428 48%,#202f43 100%);filter:brightness(.42)}
 .weather-scene{position:fixed;inset:0;z-index:-6;pointer-events:none;overflow:hidden;opacity:0;transition:opacity .8s ease}
@@ -107,7 +110,7 @@ nav button.active,nav button:hover{background:rgba(255,255,255,.12);color:#fff;b
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.search input{flex:1;border:0;outline:0;background:transparent;color:#183b5b;padding:14px 16px}.search input::placeholder{color:#7b8b98}
 .btn{border:0;border-radius:12px;padding:12px 18px;background:#087df0;color:#fff;font-weight:700;cursor:pointer;box-shadow:0 5px 16px rgba(0,93,190,.28)}
 .btn.secondary{background:rgba(255,255,255,.15);color:#fff}.btn:hover{transform:translateY(-1px)}
-.panel{background:linear-gradient(135deg,rgba(5,31,55,.86),rgba(8,55,82,.70));border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:22px;backdrop-filter:blur(14px);box-shadow:0 18px 45px rgba(0,0,0,.24)}
+.panel{background:linear-gradient(135deg,rgba(7,24,43,.88),rgba(12,48,67,.76));border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:22px;backdrop-filter:blur(14px);box-shadow:0 18px 45px rgba(0,0,0,.24)}
 .weather-head{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:18px}
 .location{font-size:1.55rem;font-weight:700}.muted{opacity:.75}
 .temp-row{display:flex;align-items:center;gap:20px}.temp{font-size:5rem;font-weight:300;line-height:1}.icon{font-size:4.5rem}
@@ -138,6 +141,21 @@ footer{text-align:center;opacity:.65;padding:30px 0 10px;font-size:.85rem}
 .hour-card .hi{font-size:1.15rem;margin-top:4px}
 .hour-card small{opacity:.7}
 .faq-item{border-top:1px solid rgba(255,255,255,.12);padding:13px 0}
+/* Enhanced weather details */
+.aqi-panel{margin-top:18px}
+.aqi-header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.aqi-badge{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:999px;font-weight:800;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12)}
+.aqi-good{background:rgba(46,204,113,.18)}.aqi-fair{background:rgba(241,196,15,.18)}.aqi-moderate{background:rgba(243,156,18,.20)}.aqi-poor{background:rgba(231,76,60,.20)}.aqi-very-poor{background:rgba(142,68,173,.24)}
+.aqi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.aqi-item{padding:13px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.09)}
+.aqi-item .aqi-label{font-size:.78rem;opacity:.72}.aqi-item .aqi-value{font-size:1.05rem;font-weight:800;margin-top:4px}
+.aqi-note{margin-top:12px;line-height:1.6;opacity:.82;font-size:.9rem}
+.sun-times{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+.sun-time{padding:12px;border-radius:14px;background:rgba(255,255,255,.07);text-align:center}
+.sun-time strong{display:block;font-size:1.05rem;margin-top:4px}
+.hour-card .fi{font-size:1.8rem;margin:6px 0}
+@media(max-width:650px){.sun-times{grid-template-columns:1fr}}
+
 .faq-item:last-child{border-bottom:1px solid rgba(255,255,255,.12)}
 .faq-item h3{cursor:pointer;margin:0;font-size:1rem}
 .faq-answer{margin-top:7px;line-height:1.65;opacity:.82}
@@ -246,6 +264,22 @@ footer{text-align:center;opacity:.65;padding:30px 0 10px;font-size:.85rem}
       <div id="multanHourly" class="hourly-grid"></div>
     </div>
 
+    <div class="panel aqi-panel">
+      <div id="multanAirQuality">
+        <h2>Multan Air Quality</h2>
+        <p>Live air quality information will appear here with the current weather data.</p>
+      </div>
+    </div>
+
+    <div class="panel" id="fortMunroSeo">
+      <h2>Fort Munro Weather</h2>
+      <p class="muted" style="line-height:1.7">
+        Check Fort Munro weather today, current temperature, hourly conditions, air quality,
+        UV index and 7-day weather forecast. WeatherHub Live provides live weather information
+        for Fort Manro, Dera Ghazi Khan, Punjab, Pakistan.
+      </p>
+    </div>
+
     <div class="panel">
       <h2>About Multan Weather</h2>
       <p>Multan is a major city in Punjab, Pakistan. Weather conditions can change across the day, so checking the current temperature together with the forecast can be useful for travel, outdoor activities and daily planning.</p>
@@ -333,13 +367,64 @@ footer{text-align:center;opacity:.65;padding:30px 0 10px;font-size:.85rem}
 </section>
 
 <div class="loader" id="loader"><i class="fas fa-spinner fa-spin"></i> Loading weather data...</div>
-<footer>WeatherHub Live • Powered by Open-Meteo API • Map by OpenStreetMap & Leaflet</footer>
+<footer>WeatherHub Live • Weather & Air Quality by Open-Meteo • Map by OpenStreetMap & Leaflet</footer>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
 const cities=[["Multan","Punjab"],["Lahore","Punjab"],["Karachi","Sindh"],["Islamabad","ICT"],["Rawalpindi","Punjab"],["Faisalabad","Punjab"],["Peshawar","Khyber Pakhtunkhwa"],["Quetta","Balochistan"],["Sialkot","Punjab"],["Bahawalpur","Punjab"],["Dera Ghazi Khan","Punjab"],["Hyderabad","Sindh"],["Gujranwala","Punjab"],["Sargodha","Punjab"],["Sheikhupura","Punjab"],["Jhang","Punjab"],["Rahim Yar Khan","Punjab"],["Gujrat","Punjab"],["Kasur","Punjab"],["Okara","Punjab"],["Sahiwal","Punjab"],["Khanewal","Punjab"],["Vehari","Punjab"],["Lodhran","Punjab"],["Muzaffargarh","Punjab"],["Layyah","Punjab"],["Rajanpur","Punjab"],["Taunsa","Punjab"],["Kot Addu","Punjab"],["Mianwali","Punjab"],["Bhakkar","Punjab"],["Khushab","Punjab"],["Chakwal","Punjab"],["Jhelum","Punjab"],["Attock","Punjab"],["Taxila","Punjab"],["Wah Cantt","Punjab"],["Hafizabad","Punjab"],["Mandi Bahauddin","Punjab"],["Narowal","Punjab"],["Daska","Punjab"],["Wazirabad","Punjab"],["Chiniot","Punjab"],["Toba Tek Singh","Punjab"],["Burewala","Punjab"],["Mian Channu","Punjab"],["Chichawatni","Punjab"],["Arifwala","Punjab"],["Pakpattan","Punjab"],["Depalpur","Punjab"],["Nankana Sahib","Punjab"],["Shahkot","Punjab"],["Sangla Hill","Punjab"],["Murree","Punjab"],["Bhurban","Punjab"],["Patriata","Punjab"],["Fort Munro","Punjab"],["Kallar Kahar","Punjab"],["Khewra","Punjab"],["Mardan","Khyber Pakhtunkhwa"],["Mingora","Khyber Pakhtunkhwa"],["Swat","Khyber Pakhtunkhwa"],["Abbottabad","Khyber Pakhtunkhwa"],["Mansehra","Khyber Pakhtunkhwa"],["Haripur","Khyber Pakhtunkhwa"],["Kohat","Khyber Pakhtunkhwa"],["Bannu","Khyber Pakhtunkhwa"],["Dera Ismail Khan","Khyber Pakhtunkhwa"],["Nowshera","Khyber Pakhtunkhwa"],["Charsadda","Khyber Pakhtunkhwa"],["Swabi","Khyber Pakhtunkhwa"],["Karak","Khyber Pakhtunkhwa"],["Hangu","Khyber Pakhtunkhwa"],["Buner","Khyber Pakhtunkhwa"],["Dir","Khyber Pakhtunkhwa"],["Timergara","Khyber Pakhtunkhwa"],["Chitral","Khyber Pakhtunkhwa"],["Drosh","Khyber Pakhtunkhwa"],["Nathiagali","Khyber Pakhtunkhwa"],["Ayubia","Khyber Pakhtunkhwa"],["Naran","Khyber Pakhtunkhwa"],["Kaghan","Khyber Pakhtunkhwa"],["Shogran","Khyber Pakhtunkhwa"],["Malam Jabba","Khyber Pakhtunkhwa"],["Kalam","Khyber Pakhtunkhwa"],["Bahrain","Khyber Pakhtunkhwa"],["Batkhela","Khyber Pakhtunkhwa"],["Parachinar","Khyber Pakhtunkhwa"],["Sukkur","Sindh"],["Larkana","Sindh"],["Nawabshah","Sindh"],["Mirpur Khas","Sindh"],["Jacobabad","Sindh"],["Shikarpur","Sindh"],["Khairpur","Sindh"],["Dadu","Sindh"],["Thatta","Sindh"],["Badin","Sindh"],["Tando Adam","Sindh"],["Tando Allahyar","Sindh"],["Umerkot","Sindh"],["Matiari","Sindh"],["Kandhkot","Sindh"],["Kashmore","Sindh"],["Ghotki","Sindh"],["Sehwan","Sindh"],["Kotri","Sindh"],["Jamshoro","Sindh"],["Mirpur Mathelo","Sindh"],["Sanghar","Sindh"],["Shahdadkot","Sindh"],["Gwadar","Balochistan"],["Turbat","Balochistan"],["Khuzdar","Balochistan"],["Chaman","Balochistan"],["Sibi","Balochistan"],["Zhob","Balochistan"],["Loralai","Balochistan"],["Kalat","Balochistan"],["Nushki","Balochistan"],["Dalbandin","Balochistan"],["Hub","Balochistan"],["Mastung","Balochistan"],["Pishin","Balochistan"],["Killa Saifullah","Balochistan"],["Killa Abdullah","Balochistan"],["Kharan","Balochistan"],["Panjgur","Balochistan"],["Awaran","Balochistan"],["Dera Bugti","Balochistan"],["Pasni","Balochistan"],["Ormara","Balochistan"],["Jiwani","Balochistan"],["Gilgit","Gilgit-Baltistan"],["Skardu","Gilgit-Baltistan"],["Hunza","Gilgit-Baltistan"],["Chilas","Gilgit-Baltistan"],["Astore","Gilgit-Baltistan"],["Khaplu","Gilgit-Baltistan"],["Gupis","Gilgit-Baltistan"],["Nagar","Gilgit-Baltistan"],["Danyor","Gilgit-Baltistan"],["Shigar","Gilgit-Baltistan"],["Ghizer","Gilgit-Baltistan"],["Muzaffarabad","Azad Jammu and Kashmir"],["Mirpur","Azad Jammu and Kashmir"],["Rawalakot","Azad Jammu and Kashmir"],["Kotli","Azad Jammu and Kashmir"],["Bagh","Azad Jammu and Kashmir"],["Bhimber","Azad Jammu and Kashmir"],["Athmuqam","Azad Jammu and Kashmir"],["Neelum Valley","Azad Jammu and Kashmir"],["Dhirkot","Azad Jammu and Kashmir"],["Hajira","Azad Jammu and Kashmir"],["Abbaspur","Azad Jammu and Kashmir"],["New York","United States"],["London","United Kingdom"],["Dubai","United Arab Emirates"],["Riyadh","Saudi Arabia"],["Istanbul","Türkiye"],["Toronto","Canada"],["Sydney","Australia"],["Adezai","Pakistan"],["Ahmadpur East","Pakistan"],["Ahmed Nager Chatha","Pakistan"],["Akora Khattak","Pakistan"],["Ali Khan Abad","Pakistan"],["Aliabad","Pakistan"],["Alipur","Pakistan"],["Alpuri","Pakistan"],["Bahawalnagar","Pakistan"],["Banda Daud Shah","Pakistan"],["Barkhan","Pakistan"],["Battagram","Pakistan"],["Bhalwal","Pakistan"],["Bhera","Pakistan"],["Bhirkan","Pakistan"],["Birote","Pakistan"],["Chagai","Pakistan"],["Chak","Pakistan"],["Chakdara","Pakistan"],["Chillianwala","Pakistan"],["Chishtian","Pakistan"],["Daggar","Pakistan"],["Dambudas","Pakistan"],["Dargai","Pakistan"],["Darya Khan","Pakistan"],["Dhaular","Pakistan"],["Digri","Pakistan"],["Dina","Pakistan"],["Dinga","Pakistan"],["Dipalpur","Pakistan"],["Diplo","Pakistan"],["Doaba","Pakistan"],["Dokri","Pakistan"],["Eidghah","Pakistan"],["Fateh Jang","Pakistan"],["Ferozewala","Pakistan"],["Gahkuch","Pakistan"],["Ghakhar Mandi","Pakistan"],["Gojra","Pakistan"],["Gujar Khan","Pakistan"],["Haala","Pakistan"],["Harnai","Pakistan"],["Haroonabad","Pakistan"],["Hasilpur","Pakistan"],["Hattian","Pakistan"],["Haveli Lakha","Pakistan"],["Haveli","Pakistan"],["Ishkoman","Pakistan"],["Islamkot","Pakistan"],["Jafarabad","Pakistan"],["Jalalpur Jattan","Pakistan"],["Jampur","Pakistan"],["Jaranwala","Pakistan"],["Jatoi","Pakistan"],["Jauharabad","Pakistan"],["Jhal Magsi","Pakistan"],["Juglot","Pakistan"],["Jungshahi","Pakistan"],["Kalabagh","Pakistan"],["Kamalia","Pakistan"],["Kamoke","Pakistan"],["Kandiaro","Pakistan"],["Karimabad","Pakistan"],["Karor Lal Esan","Pakistan"],["Keti Bandar","Pakistan"],["Khanpur","Pakistan"],["Kharian","Pakistan"],["Kohlu","Pakistan"],["Kulachi","Pakistan"],["Lakki Marwat","Pakistan"],["Lalamusa","Pakistan"],["Lasbela","Pakistan"],["Latamber","Pakistan"],["Lehri","Pakistan"],["Liaquat Pur","Pakistan"],["Madyan","Pakistan"],["Mailsi","Pakistan"],["Malakwal","Pakistan"],["Mastuj","Pakistan"],["Mehar","Pakistan"],["Mehrabpur","Pakistan"],["Mithi","Pakistan"],["Moro","Pakistan"],["Muridke","Pakistan"],["Musakhel","Pakistan"],["Nagarkhas","Pakistan"],["Nagarparkar","Pakistan"],["Nasirabad","Pakistan"],["Naudero","Pakistan"],["Naushahro Feroze","Pakistan"],["Naushara","Pakistan"],["Nazimabad","Pakistan"],["Pabbi","Pakistan"],["Paharpur","Pakistan"],["Pattoki","Pakistan"],["Pir Mahal","Pakistan"],["Poonch","Pakistan"],["Qaimpur","Pakistan"],["Qambar","Pakistan"],["Qasimabad","Pakistan"],["Qila Didar Singh","Pakistan"],["Rabwah","Pakistan"],["Raiwind","Pakistan"],["Rajo Khanani","Pakistan"],["Ranipur","Pakistan"],["Ratodero","Pakistan"],["Renala Khurd","Pakistan"],["Rohri","Pakistan"],["Sadiqabad","Pakistan"],["Safdarabad","Pakistan"],["Saidu Sharif","Pakistan"],["Sakrand","Pakistan"],["Sarai Alamgir","Pakistan"],["Shahbandar","Pakistan"],["Shahdadpur","Pakistan"],["Shahpur Chakar","Pakistan"],["Shakargarh","Pakistan"],["Sherani","Pakistan"],["Shewa Adda","Pakistan"],["Shorkot","Pakistan"],["Siranwali","Pakistan"],["Sohawa","Pakistan"],["Sohbatpur","Pakistan"],["Soianwala","Pakistan"],["Sudhanoti","Pakistan"],["Talagang","Pakistan"],["Tando Muhammad Khan","Pakistan"],["Tangi","Pakistan"],["Tangir","Pakistan"],["Tangwani","Pakistan"],["Tank","Pakistan"],["Thall","Pakistan"],["Tolti","Pakistan"],["Tordher","Pakistan"],["Wah Cantonment","Pakistan"],["Warah","Pakistan"],["Washuk","Pakistan"],["Ziarat","Pakistan"],["Taunsa Sharif","Pakistan"],["Kot Chutta","Pakistan"],["Alipur Chatha","Pakistan"],["Aroop","Pakistan"],["Baddomalhi","Pakistan"],["Bhagtanwala","Pakistan"],["Bhikhi","Pakistan"],["Bhawana","Pakistan"],["Bhowana","Pakistan"],["Buchiana","Pakistan"],["Chak Jhumra","Pakistan"],["Chawinda","Pakistan"],["Chuhar Kana","Pakistan"],["Chunian","Pakistan"],["Dijkot","Pakistan"],["Dunyapur","Pakistan"],["Fazilpur","Pakistan"],["Gujranwala Cantonment","Pakistan"],["Jandiala Sher Khan","Pakistan"],["Kabirwala","Pakistan"],["Kahna Nau","Pakistan"],["Kahror Pacca","Pakistan"],["Kallar Syedan","Pakistan"],["Kanganpur","Pakistan"],["Khan Bela","Pakistan"],["Khudian Khas","Pakistan"],["Kot Abdul Malik","Pakistan"],["Kot Radha Kishan","Pakistan"],["Kunjah","Pakistan"],["Lahore Cantonment","Pakistan"],["Mankera","Pakistan"],["Mandi Faizabad","Pakistan"],["Mandi Sadiq Ganj","Pakistan"],["Manga Mandi","Pakistan"],["Minchinabad","Pakistan"],["Narang Mandi","Pakistan"],["Nowshera Virkan","Pakistan"],["Pindi Bhattian","Pakistan"],["Pindi Gheb","Pakistan"],["Pindi Saidpur","Pakistan"],["Phalia","Pakistan"],["Qadirabad","Pakistan"],["Qaboola","Pakistan"],["Rasulnagar","Pakistan"],["Ravi","Pakistan"],["Saddar Gogera","Pakistan"],["Sambrial","Pakistan"],["Samundri","Pakistan"],["Sarai Mughal","Pakistan"],["Sillanwali","Pakistan"],["Sundar","Pakistan"],["Tandlianwala","Pakistan"],["Tranda Muhammad Panah","Pakistan"],["Uch Sharif","Pakistan"],["Yazman","Pakistan"],["Zafarwal","Pakistan"],["Adilpur","Pakistan"],["Ahsanabad","Pakistan"],["Bhan Syedabad","Pakistan"],["Bhit Shah","Pakistan"],["Bozdar Wada","Pakistan"],["Chambar","Pakistan"],["Chhor","Pakistan"],["Daharki","Pakistan"],["Daulatpur","Pakistan"],["Daur","Pakistan"],["Faqirabad","Pakistan"],["Gambat","Pakistan"],["Garhi Khairo","Pakistan"],["Garhi Yasin","Pakistan"],["Gulshan-e-Hadeed","Pakistan"],["Hala","Pakistan"],["Hingorja","Pakistan"],["Jhudo","Pakistan"],["Johi","Pakistan"],["Kamber Ali Khan","Pakistan"],["Karoondi","Pakistan"],["Khipro","Pakistan"],["Khoski","Pakistan"],["Khanpur Mahar","Pakistan"],["Karampur","Pakistan"],["Khadro","Pakistan"],["Kohistan","Pakistan"],["Kot Diji","Pakistan"],["Kot Ghulam Muhammad","Pakistan"],["Kumb","Pakistan"],["Kunri","Pakistan"],["Lakha Road","Pakistan"],["Madeji","Pakistan"],["Makli","Pakistan"],["Manjhand","Pakistan"],["Matli","Pakistan"],["Mirwah Gorchani","Pakistan"],["Naokot","Pakistan"],["Nasarpur","Pakistan"],["New Jatoi","Pakistan"],["Nindo Shahar","Pakistan"],["Pano Aqil","Pakistan"],["Pangrio","Pakistan"],["Pithoro","Pakistan"],["Qazi Ahmad","Pakistan"],["Radhan","Pakistan"],["Rato Dero","Pakistan"],["Samaro","Pakistan"],["Sehwan Sharif","Pakistan"],["Sinjhoro","Pakistan"],["Sobho Dero","Pakistan"],["Sujawal","Pakistan"],["Tando Jam","Pakistan"],["Tando Jan Muhammad","Pakistan"],["Tando Masti Khan","Pakistan"],["Tando Soomro","Pakistan"],["Thari Mirwah","Pakistan"],["Tharo Shah","Pakistan"],["Therhi","Pakistan"],["Ubauro","Pakistan"],["Waryam Wali","Pakistan"],["Abbottabad Cantonment","Pakistan"],["Akbarpura","Pakistan"],["Alizai","Pakistan"],["Aman Kot","Pakistan"],["Amangarh","Pakistan"],["Baffa","Pakistan"],["Bajaur","Pakistan"],["Balakot","Pakistan"],["Barikot","Pakistan"],["Darband","Pakistan"],["Dobian","Pakistan"],["Dir Upper","Pakistan"],["Jamrud","Pakistan"],["Jehangira","Pakistan"],["Kabal","Pakistan"],["Kakki","Pakistan"],["Kanju","Pakistan"],["Katlang","Pakistan"],["Khwazakhela","Pakistan"],["Kohat Cantonment","Pakistan"],["Kotalai","Pakistan"],["Landi Kotal","Pakistan"],["Munda","Pakistan"],["Mardan Cantonment","Pakistan"],["Matta","Pakistan"],["Nowshera Cantonment","Pakistan"],["Risalpur","Pakistan"],["Shabqadar","Pakistan"],["Shangla","Pakistan"],["Shangla Top","Pakistan"],["Shergarh","Pakistan"],["Shinkiari","Pakistan"],["Takht-i-Bahi","Pakistan"],["Topi","Pakistan"],["Utmanzai","Pakistan"],["Wari","Pakistan"],["Wazir","Pakistan"],["Zaida","Pakistan"],["Aghberg","Pakistan"],["Ahmad Wal","Pakistan"],["Bela","Pakistan"],["Bhag","Pakistan"],["Dhadar","Pakistan"],["Dera Murad Jamali","Pakistan"],["Duki","Pakistan"],["Gandawah","Pakistan"],["Mach","Pakistan"],["Qila Saifullah","Pakistan"],["Qila Abdullah","Pakistan"],["Rakhni","Pakistan"],["Sanjavi","Pakistan"],["Surab","Pakistan"],["Tump","Pakistan"],["Uthal","Pakistan"],["Wadh","Pakistan"],["Winder","Pakistan"],["Chakswari","Pakistan"],["Chinari","Pakistan"],["Dadyal","Pakistan"],["Forward Kahuta","Pakistan"],["Hattian Bala","Pakistan"],["Kahuta AJK","Pakistan"],["Kel","Pakistan"],["Khuiratta","Pakistan"],["Kutton","Pakistan"],["Leepa","Pakistan"],["Mangla","Pakistan"],["Mirpur AJK","Pakistan"],["Nakyal","Pakistan"],["Neelum","Pakistan"],["Pallandri","Pakistan"],["Samahni","Pakistan"],["Sehnsa","Pakistan"],["Tatta Pani","Pakistan"],["Thorar","Pakistan"],["Bunji","Pakistan"],["Diamer","Pakistan"],["Gulmit","Pakistan"],["Kharmang","Pakistan"],["Khomer","Pakistan"],["Passu","Pakistan"],["Phander","Pakistan"],["Sost","Pakistan"],["Tashot","Pakistan"],["Yasin","Pakistan"],["Siri Paye","Pakistan"],["Bahrain Swat","Pakistan"],["Miandam","Pakistan"],["Fizagat","Pakistan"],["Ushu","Pakistan"],["Mahandand Lake","Pakistan"],["Gabral","Pakistan"],["Kumrat","Pakistan"],["Thal Kumrat","Pakistan"],["Upper Dir","Pakistan"],["Lower Dir","Pakistan"],["Chitral Valley","Pakistan"],["Booni","Pakistan"],["Kalash Valley","Pakistan"],["Bumburet","Pakistan"],["Rumbur","Pakistan"],["Birir","Pakistan"],["Shandur","Pakistan"],["Ayun","Pakistan"],["Garam Chashma","Pakistan"],["Mankial","Pakistan"],["Kaghan Valley","Pakistan"],["Naran Valley","Pakistan"],["Batakundi","Pakistan"],["Babusar","Pakistan"],["Babusar Top","Pakistan"],["Lulusar","Pakistan"],["Jalkhad","Pakistan"],["Besal","Pakistan"],["Saiful Mulook","Pakistan"],["Kiwai","Pakistan"],["Khanian","Pakistan"],["Pir Chinasi","Pakistan"],["Keran","Pakistan"],["Sharda","Pakistan"],["Taobat","Pakistan"],["Arang Kel","Pakistan"],["Ratti Gali","Pakistan"],["Dudipatsar","Pakistan"],["Gurez Valley","Pakistan"],["Leepa Valley","Pakistan"],["Toli Pir","Pakistan"],["Banjosa","Pakistan"],["Kashmir Point","Pakistan"],["Patriata New Murree","Pakistan"],["Ayubia National Park","Pakistan"],["Dunga Gali","Pakistan"],["Changla Gali","Pakistan"],["Khanspur","Pakistan"],["Thandiani","Pakistan"],["Khanaspur","Pakistan"],["Mushkpuri","Pakistan"],["Miranjani","Pakistan"],["Saif-ul-Malook","Pakistan"],["Malakand","Pakistan"],["Kund Malir","Pakistan"],["Hingol","Pakistan"],["Sonmiani","Pakistan"],["Astola Island","Pakistan"],["Pishukan","Pakistan"],["Sur Bandar","Pakistan"],["Hanna Lake","Pakistan"],["Pir Ibrahim","Pakistan"],["Karkh","Pakistan"],["Moola Chotok","Pakistan"],["Pir Koh","Pakistan"],["Chachro","Pakistan"],["Tharparkar","Pakistan"],["Keenjhar","Pakistan"],["Shah Bandar","Pakistan"],["Bara Kahu","Pakistan"],["Bhara Kahu","Pakistan"],["Sihala","Pakistan"],["Nilore","Pakistan"],["Tarnol","Pakistan"],["Golra Sharif","Pakistan"],["Saidpur","Pakistan"],["Koral","Pakistan"],["Humak","Pakistan"],["Rawat","Pakistan"],["Chakri","Pakistan"],["Adiala","Pakistan"],["Kahuta","Pakistan"],["Kotli Sattian","Pakistan"],["Pind Dadan Khan","Pakistan"],["Lilla","Pakistan"],["Hasan Abdal","Pakistan"],["Kamra","Pakistan"],["Hassan Abdal","Pakistan"],["Pasrur","Pakistan"],["Shahpur","Pakistan"],["Kot Momin","Pakistan"],["Fatehpur","Pakistan"],["Noorpur Thal","Pakistan"],["Isa Khel","Pakistan"],["Piplan","Pakistan"],["Kundian","Pakistan"],["Kallur Kot","Pakistan"],["Ahmedpur Sial","Pakistan"],["Athara Hazari","Pakistan"],["Pirmahal","Pakistan"],["Harappa","Pakistan"],["Hujra Shah Muqeem","Pakistan"],["Changa Manga","Pakistan"],["Fort Abbas","Pakistan"],["Dahranwala","Pakistan"],["Ahmedpur East","Pakistan"],["Khairpur Tamewali","Pakistan"],["Lal Sohanra","Pakistan"],["Liaquatpur","Pakistan"],["Kot Samaba","Pakistan"],["Tranda Saway Khan","Pakistan"],["Machi Goth","Pakistan"],["Choubara","Pakistan"],["Fatehpur Layyah","Pakistan"],["Dajal","Pakistan"],["Rojhan","Pakistan"],["Shahwali","Pakistan"],["Kot Mithan","Pakistan"],["Jahanian","Pakistan"],["Tulamba","Pakistan"],["Mandi Yazman","Pakistan"],["Ali Pur Chattha","Pakistan"],["Aminabad","Pakistan"],["Bhopalwala","Pakistan"],["Daska Road","Pakistan"],["Jamke Cheema","Pakistan"],["Kalaske","Pakistan"],["Kotli Loharan","Pakistan"],["Motra","Pakistan"],["Qila Kalarwala","Pakistan"],["Ugoki","Pakistan"],["Begowala","Pakistan"],["Bela Wali","Pakistan"],["Satrah","Pakistan"],["Badiana","Pakistan"],["Sialkot Cantonment","Pakistan"],["Panj Kora","Pakistan"],["Kheshgi","Pakistan"],["Pirpiai","Pakistan"],["Azakhel","Pakistan"],["Khatak","Pakistan"],["Nizampur","Pakistan"],["Khwaja Banda","Pakistan"],["Charbagh","Pakistan"],["Bisham","Pakistan"],["Puran","Pakistan"],["Martung","Pakistan"],["Lawa","Pakistan"],["Choa Saidan Shah","Pakistan"],["Dandot","Pakistan"],["Mirza","Pakistan"],["Kharian Cantonment","Pakistan"],["Bhiria City","Pakistan"],["Bhiria Road","Pakistan"],["Padidan","Pakistan"],["Darya Khan Marri","Pakistan"],["Qazi Ahmed","Pakistan"],["Kazi Ahmed","Pakistan"],["Bandhi","Pakistan"],["Jalal Chandio","Pakistan"],["Kamber","Pakistan"],["Miro Khan","Pakistan"],["Nasirabad Sindh","Pakistan"],["Bakrani","Pakistan"],["Lakhi","Pakistan"],["Khanpur Sindh","Pakistan"],["Thul","Pakistan"],["Saleh Pat","Pakistan"],["New Sukkur","Pakistan"],["Pir Jo Goth","Pakistan"],["Setharja","Pakistan"],["Sobhodero","Pakistan"],["Naushera Feroze","Pakistan"],["Chamber","Pakistan"],["Talhar","Pakistan"],["Golarchi","Pakistan"],["Mirpur Sakro","Pakistan"],["Gharo","Pakistan"],["Jati","Pakistan"],["Khairpur Nathan Shah","Pakistan"],["Dureji","Pakistan"],["Hoshab","Pakistan"],["Buleda","Pakistan"],["Mand","Pakistan"],["Gichk","Pakistan"],["Nal","Pakistan"],["Mangochar","Pakistan"],["Dasht","Pakistan"],["Kuchlak","Pakistan"],["Bostan","Pakistan"],["Karezat","Pakistan"],["Gulistan","Pakistan"],["Dobandi","Pakistan"],["Muslim Bagh","Pakistan"],["Shahrig","Pakistan"],["Usta Muhammad","Pakistan"],["Jaffarabad","Pakistan"],["Dera Allah Yar","Pakistan"],["Mawand","Pakistan"],["Sui","Pakistan"],["Loti","Pakistan"],["Nok Kundi","Pakistan"],["Taftan","Pakistan"],["Besima","Pakistan"],["Basima","Pakistan"],["Mashkay","Pakistan"],["Jhal Jao","Pakistan"],["Nomal","Pakistan"],["Naltar","Pakistan"],["Bagrote","Pakistan"],["Darel","Pakistan"],["Rama","Pakistan"],["Minimarg","Pakistan"],["Askole","Pakistan"],["Shigar Valley","Pakistan"],["Deosai","Pakistan"],["Satpara","Pakistan"],["Sadpara","Pakistan"],["Ghanche","Pakistan"],["Saling","Pakistan"],["Mourkhun","Pakistan"],["Altit","Pakistan"],["Baltit","Pakistan"],["Ghulkin","Pakistan"],["Husseini","Pakistan"],["Khunjerab","Pakistan"],["Misgar","Pakistan"],["Minapin","Pakistan"],["Hopar","Pakistan"],["Puniyal","Pakistan"],["Khalti","Pakistan"],["Chakothi","Pakistan"],["Garhi Habibullah","Pakistan"],["Kohala","Pakistan"],["Patikka","Pakistan"],["Dudhnial","Pakistan"],["Reshian","Pakistan"],["Chak Swari","Pakistan"],["Islamgarh","Pakistan"],["Charhoi","Pakistan"],["Fatehpur Thakiala","Pakistan"],["Barnala","Pakistan"],["Birpani","Pakistan"],["Arja","Pakistan"],["Mong","Pakistan"],["Mohenjo Daro","Pakistan"],["Rohtas","Pakistan"],["Rohtas Fort","Pakistan"],["Katas Raj","Pakistan"],["Khewra Salt Mines","Pakistan"],["Lahore Fort","Pakistan"],["Badshahi Mosque","Pakistan"],["Mazar-e-Quaid","Pakistan"],["Derawar","Pakistan"],["Derawar Fort","Pakistan"],["Lal Suhanra","Pakistan"],["Ranikot","Pakistan"],["Keenjhar Lake","Pakistan"],["Manchar Lake","Pakistan"],["Hingol National Park","Pakistan"],["Astola","Pakistan"],["Ziarat Residency","Pakistan"],["Pir Sohawa","Pakistan"],["Daman-e-Koh","Pakistan"],["Margalla Hills","Pakistan"],["Khanpur Dam","Pakistan"],["Soon Valley","Pakistan"],["Khabeki","Pakistan"],["Uchhali","Pakistan"],["Nathia Gali","Pakistan"],["Kalash","Pakistan"]];
+function iconFor(code,isDay=1){
+ const day=Number(isDay)===1;
+ if(code===0) return day?'☀️':'🌙';
+ if(code===1) return day?'🌤️':'🌙';
+ if(code===2) return day?'⛅':'☁️';
+ if(code===3) return '☁️';
+ if([45,48].includes(code)) return '🌫️';
+ if([51,53,55].includes(code)) return '🌦️';
+ if([56,57,66,67].includes(code)) return '🌨️';
+ if([61,63,65,80,81].includes(code)) return '🌧️';
+ if(code===82) return '⛈️';
+ if([71,73,75,77,85,86].includes(code)) return '❄️';
+ if([95,96,99].includes(code)) return '⛈️';
+ return '🌡️';
+}
+function aqiInfo(aqi){
+ const n=Number(aqi);
+ if(!Number.isFinite(n)) return {label:'Unavailable',cls:'',note:'Air quality data is not available right now.'};
+ if(n<=50) return {label:'Good',cls:'aqi-good',note:'Air quality is generally good.'};
+ if(n<=100) return {label:'Moderate',cls:'aqi-fair',note:'Air quality is acceptable; unusually sensitive people may want to reduce prolonged outdoor exposure.'};
+ if(n<=150) return {label:'Unhealthy for sensitive groups',cls:'aqi-moderate',note:'Sensitive people may want to reduce prolonged or heavy outdoor activity.'};
+ if(n<=200) return {label:'Unhealthy',cls:'aqi-poor',note:'Consider reducing prolonged outdoor activity, especially if you are sensitive to air pollution.'};
+ if(n<=300) return {label:'Very Unhealthy',cls:'aqi-very-poor',note:'Health alert conditions may affect more people; consider limiting prolonged outdoor activity.'};
+ return {label:'Hazardous',cls:'aqi-very-poor',note:'Health alert: avoid unnecessary prolonged outdoor exposure.'};
+}
+function renderAirQuality(aq){
+ if(!aq || !aq.current) return `<div class="aqi-panel"><h2>Air Quality</h2><p class="muted">Air quality data is temporarily unavailable.</p></div>`;
+ const c=aq.current, info=aqiInfo(c.us_aqi);
+ const val=(x,d=1)=>x==null?'—':Number(x).toFixed(d);
+ return `<div class="aqi-panel">
+  <div class="aqi-header"><div><h2>Air Quality</h2><div class="muted">Live air quality indicators</div></div>
+  <div class="aqi-badge ${info.cls}"><i class="fas fa-lungs"></i> US AQI: ${c.us_aqi ?? '—'} · ${info.label}</div></div>
+  <div class="aqi-grid">
+   <div class="aqi-item"><div class="aqi-label">US AQI</div><div class="aqi-value">${c.us_aqi ?? '—'}</div></div>
+   <div class="aqi-item"><div class="aqi-label">European AQI</div><div class="aqi-value">${c.european_aqi ?? '—'}</div></div>
+   <div class="aqi-item"><div class="aqi-label">PM2.5</div><div class="aqi-value">${val(c.pm2_5)} µg/m³</div></div>
+   <div class="aqi-item"><div class="aqi-label">PM10</div><div class="aqi-value">${val(c.pm10)} µg/m³</div></div>
+   <div class="aqi-item"><div class="aqi-label">O₃</div><div class="aqi-value">${val(c.ozone)} µg/m³</div></div>
+   <div class="aqi-item"><div class="aqi-label">NO₂</div><div class="aqi-value">${val(c.nitrogen_dioxide)} µg/m³</div></div>
+   <div class="aqi-item"><div class="aqi-label">SO₂</div><div class="aqi-value">${val(c.sulphur_dioxide)} µg/m³</div></div>
+   <div class="aqi-item"><div class="aqi-label">CO</div><div class="aqi-value">${val(c.carbon_monoxide)} µg/m³</div></div>
+  </div>
+  <div class="aqi-note">${info.note}</div>
+ </div>`;
+}
+function formatLocalTime(value){
+ if(!value) return '—';
+ const d=new Date(value);
+ return Number.isNaN(d.getTime())?'—':d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+}
+
 const icons={0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌧️',61:'🌧️',63:'🌧️',65:'🌧️',66:'🌨️',67:'🌨️',71:'❄️',73:'❄️',75:'❄️',77:'❄️',80:'🌦️',81:'🌧️',82:'⛈️',85:'🌨️',86:'🌨️',95:'⛈️',96:'⛈️',99:'⛈️'};
 const desc={0:'Clear sky',1:'Mainly clear',2:'Partly cloudy',3:'Overcast',45:'Foggy',48:'Foggy',51:'Light drizzle',53:'Moderate drizzle',55:'Dense drizzle',61:'Slight rain',63:'Moderate rain',65:'Heavy rain',66:'Freezing rain',67:'Heavy freezing rain',71:'Slight snow',73:'Moderate snow',75:'Heavy snow',77:'Snow grains',80:'Rain showers',81:'Moderate rain showers',82:'Violent rain showers',85:'Snow showers',86:'Heavy snow showers',95:'Thunderstorm',96:'Thunderstorm with hail',99:'Thunderstorm with heavy hail'};
 let map,marker;
@@ -360,12 +445,23 @@ async function geocode(city){
  return d.results[0];
 }
 async function weatherAt(lat,lon){
- const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,pressure_msl,wind_speed_10m,is_day&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,precipitation_probability,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset&timezone=auto&forecast_days=7`);
+ const url=`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,pressure_msl,wind_speed_10m,is_day,uv_index&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,precipitation_probability,wind_speed_10m,is_day&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max&timezone=auto&forecast_days=7`;
+ const r=await fetch(url);
+ if(!r.ok) throw new Error('Weather service is temporarily unavailable.');
  return await r.json();
 }
+async function airQualityAt(lat,lon){
+ try{
+  const url=`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=us_aqi,european_aqi,pm2_5,pm10,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone&timezone=auto`;
+  const r=await fetch(url);
+  if(!r.ok) return null;
+  return await r.json();
+ }catch(e){return null}
+}
 async function getCityWeather(city){
- const g=await geocode(city); const w=await weatherAt(g.latitude,g.longitude);
- return {g,w};
+ const g=await geocode(city);
+ const [w,aq]=await Promise.all([weatherAt(g.latitude,g.longitude),airQualityAt(g.latitude,g.longitude)]);
+ return {g,w,aq};
 }
 function buildWeatherParticles(){
   const rain=document.getElementById('rainLayer');
@@ -412,44 +508,54 @@ function setWeatherBackground(code,isDay=1){
 
 
 function renderMultanHourly(w){
-  const h=w.hourly;
-  if(!h || !h.time || !h.temperature_2m) return '';
-  const now=Date.now();
-  const start=Math.max(0,h.time.findIndex(t=>new Date(t).getTime()>=now));
-  const idx=start<0?0:start;
-  const end=Math.min(idx+12,h.time.length);
-  return Array.from({length:end-idx},(_,j)=>{
-    const i=idx+j;
-    const dt=new Date(h.time[i]);
-    const rain=h.precipitation_probability?.[i];
-    return `<div class="hour-card"><small>${j===0?'Now':dt.toLocaleTimeString('en-US',{hour:'numeric'})}</small><div class="fi">${icons[h.weather_code?.[i]]||'🌡️'}</div><div class="hi">${Math.round(h.temperature_2m[i])}°C</div>${rain!=null?`<small>Rain ${rain}%</small>`:''}</div>`;
-  }).join('');
+ const h=w.hourly;
+ if(!h || !h.time || !h.temperature_2m) return '';
+ const now=Date.now();
+ const start=Math.max(0,h.time.findIndex(t=>new Date(t).getTime()>=now));
+ const idx=start<0?0:start;
+ const end=Math.min(idx+12,h.time.length);
+ return Array.from({length:end-idx},(_,j)=>{
+  const i=idx+j;
+  const dt=new Date(h.time[i]);
+  const rain=h.precipitation_probability?.[i];
+  const isDay=h.is_day?.[i] ?? (dt.getHours()>=6 && dt.getHours()<18 ? 1 : 0);
+  return `<div class="hour-card"><small>${j===0?'Now':dt.toLocaleTimeString('en-US',{hour:'numeric'})}</small><div class="fi">${iconFor(h.weather_code?.[i],isDay)}</div><div class="hi">${Math.round(h.temperature_2m[i])}°C</div>${rain!=null?`<small>Rain ${rain}%</small>`:''}</div>`;
+ }).join('');
 }
 
-function renderWeather(g,w){
+function renderWeather(g,w,aq=null){
  const c=w.current,d=w.daily;
+ const currentIcon=iconFor(c.weather_code,c.is_day);
  setWeatherBackground(c.weather_code,c.is_day);
- let days=d.time.map((t,i)=>`<div class="forecast-card"><div><b>${i===0?'Today':new Date(t).toLocaleDateString('en-US',{weekday:'short'})}</b></div><div class="fi">${icons[d.weather_code[i]]||'🌡️'}</div><div class="hi">${Math.round(d.temperature_2m_max[i])}°</div><div class="lo">${Math.round(d.temperature_2m_min[i])}°</div></div>`).join('');
+ let days=d.time.map((t,i)=>`<div class="forecast-card"><div><b>${i===0?'Today':new Date(t).toLocaleDateString('en-US',{weekday:'short'})}</b></div><div class="fi">${iconFor(d.weather_code[i],1)}</div><div class="hi">${Math.round(d.temperature_2m_max[i])}°</div><div class="lo">${Math.round(d.temperature_2m_min[i])}°</div></div>`).join('');
+ const sunrise=d.sunrise?.[0], sunset=d.sunset?.[0], uv=(c.uv_index ?? d.uv_index_max?.[0]);
  return `<div class="panel"><div class="weather-head"><div><div class="location">${g.name}, ${g.country||''}</div><div class="muted">${g.admin1||''}</div></div><div class="muted">${new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}</div></div>
- <div class="temp-row"><div class="temp">${Math.round(c.temperature_2m)}°</div><div class="icon">${icons[c.weather_code]||'🌡️'}</div></div>
- <div class="desc">${desc[c.weather_code]||'Weather'}</div>
+ <div class="temp-row"><div class="temp">${Math.round(c.temperature_2m)}°</div><div class="icon">${currentIcon}</div></div>
+ <div class="desc">${desc[c.weather_code]||'Weather'} · ${Number(c.is_day)===1?'Daytime':'Nighttime'}</div>
  <div class="details">
- <div class="card"><i class="fas fa-temperature-high"></i><div class="label">Feels Like</div><div class="value">${Math.round(c.apparent_temperature)}°C</div></div>
- <div class="card"><i class="fas fa-tint"></i><div class="label">Humidity</div><div class="value">${c.relative_humidity_2m}%</div></div>
- <div class="card"><i class="fas fa-wind"></i><div class="label">Wind</div><div class="value">${Math.round(c.wind_speed_10m)} km/h</div></div>
- <div class="card"><i class="fas fa-compress-arrows-alt"></i><div class="label">Pressure</div><div class="value">${Math.round(c.pressure_msl)} hPa</div></div>
- </div><h2 class="section-title">7-Day Forecast</h2><div class="forecast-grid">${days}</div></div>`;
+  <div class="card"><i class="fas fa-temperature-high"></i><div class="label">Feels Like</div><div class="value">${Math.round(c.apparent_temperature)}°C</div></div>
+  <div class="card"><i class="fas fa-tint"></i><div class="label">Humidity</div><div class="value">${c.relative_humidity_2m}%</div></div>
+  <div class="card"><i class="fas fa-wind"></i><div class="label">Wind</div><div class="value">${Math.round(c.wind_speed_10m)} km/h</div></div>
+  <div class="card"><i class="fas fa-compress-arrows-alt"></i><div class="label">Pressure</div><div class="value">${Math.round(c.pressure_msl)} hPa</div></div>
+  <div class="card"><i class="fas fa-sun"></i><div class="label">UV Index</div><div class="value">${uv==null?'—':Number(uv).toFixed(1)}</div></div>
+ </div>
+ <div class="sun-times">
+  <div class="sun-time"><span>🌅 Sunrise</span><strong>${formatLocalTime(sunrise)}</strong></div>
+  <div class="sun-time"><span>🌇 Sunset</span><strong>${formatLocalTime(sunset)}</strong></div>
+ </div>
+ ${renderAirQuality(aq)}
+ <h2 class="section-title">7-Day Forecast</h2><div class="forecast-grid">${days}</div></div>`;
 }
 async function searchCity(inputId){
  const city=document.getElementById(inputId).value.trim(); if(!city)return;
  showPage('weather'); clearNotice('weatherNotice'); loading(true);
- try{const x=await getCityWeather(city);document.getElementById('weatherResult').innerHTML=renderWeather(x.g,x.w); if(city.trim().toLowerCase()==='multan'){document.getElementById('multanHourly').innerHTML=renderMultanHourly(x.w);} document.getElementById('cityInputWeather').value=city;}
+ try{const x=await getCityWeather(city);document.getElementById('weatherResult').innerHTML=renderWeather(x.g,x.w,x.aq); if(city.trim().toLowerCase()==='multan'){document.getElementById('multanHourly').innerHTML=renderMultanHourly(x.w);const aqEl=document.getElementById('multanAirQuality');if(aqEl) aqEl.innerHTML=renderAirQuality(x.aq);} document.getElementById('cityInputWeather').value=city;}
  catch(e){setNotice('weatherNotice',e.message)} finally{loading(false)}
 }
 function openCity(city){document.getElementById('cityInputHome').value=city;showPage('home');loadHome(city)}
 async function loadHome(city='Multan'){
  loading(true);clearNotice('homeNotice');
- try{const x=await getCityWeather(city);document.getElementById('homeWeather').innerHTML=renderWeather(x.g,x.w); if(city.trim().toLowerCase()==='multan'){const eh=document.getElementById('multanHourly'); if(eh) eh.innerHTML=renderMultanHourly(x.w);}}
+ try{const x=await getCityWeather(city);document.getElementById('homeWeather').innerHTML=renderWeather(x.g,x.w,x.aq); if(city.trim().toLowerCase()==='multan'){const eh=document.getElementById('multanHourly'); if(eh) eh.innerHTML=renderMultanHourly(x.w);const aqEl=document.getElementById('multanAirQuality');if(aqEl) aqEl.innerHTML=renderAirQuality(x.aq);}}
  catch(e){setNotice('homeNotice',e.message)}finally{loading(false)}
 }
 function cityCards(filter=""){
@@ -463,7 +569,7 @@ async function useLocation(){
  if(!navigator.geolocation)return setNotice('homeNotice','Location is not supported by this browser.');
  loading(true);clearNotice('homeNotice');
  navigator.geolocation.getCurrentPosition(async p=>{
-  try{const w=await weatherAt(p.coords.latitude,p.coords.longitude);const g={name:'Your Location',country:'',admin1:''};document.getElementById('homeWeather').innerHTML=renderWeather(g,w);showPage('home')}
+  try{const [w,aq]=await Promise.all([weatherAt(p.coords.latitude,p.coords.longitude),airQualityAt(p.coords.latitude,p.coords.longitude)]);const g={name:'Your Location',country:'',admin1:''};document.getElementById('homeWeather').innerHTML=renderWeather(g,w,aq);showPage('home')}
   catch(e){setNotice('homeNotice','Could not load location weather.')}
   finally{loading(false)}
  },()=>{loading(false);setNotice('homeNotice','Location permission was denied. Please search for a city instead.')},{enableHighAccuracy:true,timeout:10000});
@@ -475,7 +581,7 @@ function initMap(){
  map.on('click',async e=>{await mapWeather(e.latlng.lat,e.latlng.lng)});
 }
 async function mapWeather(lat,lon){
- try{const w=await weatherAt(lat,lon);if(marker)marker.remove();marker=L.marker([lat,lon]).addTo(map);marker.bindPopup(`${Math.round(w.current.temperature_2m)}°C · ${desc[w.current.weather_code]||'Weather'}`).openPopup();document.getElementById('mapWeather').innerHTML=renderWeather({name:'Map Location',country:'',admin1:`${lat.toFixed(3)}, ${lon.toFixed(3)}`},w)}
+ try{const [w,aq]=await Promise.all([weatherAt(lat,lon),airQualityAt(lat,lon)]);if(marker)marker.remove();marker=L.marker([lat,lon]).addTo(map);marker.bindPopup(`${Math.round(w.current.temperature_2m)}°C · ${desc[w.current.weather_code]||'Weather'}`).openPopup();document.getElementById('mapWeather').innerHTML=renderWeather({name:'Map Location',country:'',admin1:`${lat.toFixed(3)}, ${lon.toFixed(3)}`},w,aq)}
  catch(e){document.getElementById('mapWeather').textContent='Unable to load weather for this location.'}
 }
 async function mapSetWeather(city){const g=await geocode(city);map.setView([g.latitude,g.longitude],8);mapWeather(g.latitude,g.longitude)}
