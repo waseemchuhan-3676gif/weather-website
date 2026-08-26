@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Live Multan and Fort Munro weather updates: current temperature, feels-like temperature, humidity, wind, UV index, air quality, hourly weather and 7-day forecasts. Check Fort Munro weather today, tomorrow and weekly forecast in Punjab, Pakistan.">
-<meta name="keywords" content="Multan weather, Multan weather today, Multan weather forecast, Multan temperature, Multan hourly weather, Multan 7 day weather forecast, Multan air quality, Multan AQI, Pakistan weather, Pakistan weather forecast, live weather Pakistan, Fort Munro weather, Fort Munro weather today, Fort Munro weather forecast, Fort Munro temperature, Fort Munro hourly weather, Fort Munro weather tomorrow, Fort Munro 7 day weather forecast, Fort Munro air quality, Fort Munro AQI, Fort Munro Punjab weather, Fort Munro Dera Ghazi Khan weather, Fort Munro Pakistan weather, Fort Munro live weather, Fort Manro, Fortmanru, Fortmanro">
+<meta name="keywords" content="Multan weather, Multan weather today, Multan weather forecast, Multan temperature, Multan hourly weather, Multan 7 day weather forecast, Multan air quality, Multan AQI, Pakistan weather, Pakistan weather forecast, live weather Pakistan, Fort Munro weather, Fort Munro weather today, Fort Munro weather forecast, Fort Munro temperature, Fort Munro hourly weather, Fort Munro weather tomorrow, Fort Munro 7 day weather forecast, Fort Munro air quality, Fort Munro AQI, Fort Munro Punjab weather, Fort Munro Dera Ghazi Khan weather, Fort Munro Pakistan weather, Fort Munro live weather, Fourt manru, Fourtmanru, Fourtmanro, Fourt manro, Fortmenro, Fort menro, Fourtmenro, Fourt menru, Fourtmenru, Fortmanro Punjab, Fortmanro Balochistan, Fortmanru Punjab, Fortmanru Balochistan, Fourtmanro Punjab, Fourtmanro Balochistan, Fourtmanru Punjab, Fourtmanru Balochistan, Fort Munro Punjab, Fort Munro Balochistan, Fort Manro, Fortmanru, Fortmanro, Fortmunro, Fort Munroo, Fort Munru, Fort Murno, Fort Monro, Fort Monru, Fort Menro, Fort Menru, Fort Manroo, Fort Manro weather, Fortmanro weather, Fortmanru weather, Multaan weather, Miltan weather, Multn weather, Multon weather, Multan Pakistan weather">
 <meta name="author" content="WeatherHub Live">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://weatherhublive.netlify.app/">
@@ -458,8 +458,70 @@ async function airQualityAt(lat,lon){
   return await r.json();
  }catch(e){return null}
 }
+function resolveCommonCityName(city){
+ const raw = city.trim().toLowerCase();
+ const compact = raw.replace(/[^a-z]/g,'');
+ const aliases = {
+  // Fort Munro — common spelling mistakes / missing spaces
+  'fortmanro':'Fort Munro',
+  'fortmanru':'Fort Munro',
+  'fortmanroo':'Fort Munro',
+  'fortmanrooo':'Fort Munro',
+  'fortmunro':'Fort Munro',
+  'fortmunroo':'Fort Munro',
+  'fortmunru':'Fort Munro',
+  'fortmurno':'Fort Munro',
+  'fortmonro':'Fort Munro',
+  'fortmonru':'Fort Munro',
+  'fortmenro':'Fort Munro',
+  'fortmenru':'Fort Munro',
+  'fortmanu':'Fort Munro',
+  'fortmuro':'Fort Munro',
+  'fortmuroo':'Fort Munro',
+  'formanro':'Fort Munro',
+  'formunro':'Fort Munro',
+  'formunru':'Fort Munro',
+  // Requested "Fourt" and other common typing variants
+  'fourtmanru':'Fort Munro',
+  'fourtmanro':'Fort Munro',
+  'fourtmanroo':'Fort Munro',
+  'fourtmanru':'Fort Munro',
+  'fourtmenru':'Fort Munro',
+  'fourtmenro':'Fort Munro',
+  'fourtmunro':'Fort Munro',
+  'fourtmunru':'Fort Munro',
+  'fourtmonro':'Fort Munro',
+  'fourtmonru':'Fort Munro',
+  // Multan — common spelling mistakes / variants
+  'multan':'Multan',
+  'multaan':'Multan',
+  'multaan':'Multan',
+  'multn':'Multan',
+  'miltan':'Multan',
+  'multon':'Multan',
+  'multaaan':'Multan',
+  'multanpk':'Multan',
+  'multanpakistan':'Multan'
+ };
+ if(aliases[compact]) return aliases[compact];
+
+ // Forgiving matching for small typing mistakes:
+ // Recognize Fort/Fourt variants, optional spacing, and optional Punjab/Balochistan.
+ const withoutRegion = compact.replace(/(punjab|balochistan|pakistan)$/,'');
+ if((/^fort/.test(withoutRegion) || /^fourt/.test(withoutRegion) || /^form/.test(withoutRegion))
+    && /(man|mun|mon|men|murn|muro|muru)/.test(withoutRegion)){
+  return 'Fort Munro';
+ }
+ // Same idea for common Multan misspellings.
+ if(/^mult/.test(compact) && compact.length >= 5 && compact.length <= 10){
+  return 'Multan';
+ }
+ return city.trim();
+}
+
 async function getCityWeather(city){
- const g=await geocode(city);
+ const normalizedCity = resolveCommonCityName(city);
+ const g=await geocode(normalizedCity);
  const [w,aq]=await Promise.all([weatherAt(g.latitude,g.longitude),airQualityAt(g.latitude,g.longitude)]);
  return {g,w,aq};
 }
