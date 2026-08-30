@@ -12,17 +12,16 @@
 </script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="Live Multan and Fort Munro weather updates: current temperature, feels-like temperature, humidity, wind, UV index, air quality, hourly weather and 7-day forecasts. Check Fort Munro weather today, tomorrow and weekly forecast in Punjab, Pakistan." name="description"/>
-<meta content="Multan weather, Multan weather today, Multan weather forecast, Multan temperature, Multan hourly weather, Multan 7 day weather forecast, Multan AQI, Multan air quality, Fortmanro weather, Fortmanro weather today, Fortmanro weather forecast, Fortmanro temperature, Fortmanro hourly weather, Fortmanro weather tomorrow, Fortmanro 7 day weather forecast, Fortmanro AQI, Fortmanro air quality, Fortmanro Punjab weather, Fortmanro Dera Ghazi Khan weather, Fortmanro Pakistan weather" name="keywords"/>
+<meta content="Pakistan weather today with live temperature, hourly weather, air quality, UV index and 7-day forecasts for Multan, Lahore, Fort Munro and 700+ cities." name="description"/>
 <meta content="WeatherHub Live" name="author"/>
 <meta content="index, follow, max-image-preview:large" name="robots"/>
-<link href="https://weatherhublive.netlify.app/" rel="canonical"/>
+<link href="https://waseemchuhan-3676gif.github.io/weather-website/" rel="canonical"/>
 <meta content="#102a56" name="theme-color"/>
 <meta content="dark" name="color-scheme"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
 <meta content="WeatherHub Live" name="application-name"/>
 <meta content="website" property="og:type"/>
-<meta content="https://weatherhublive.netlify.app/" property="og:url"/>
+<meta content="https://waseemchuhan-3676gif.github.io/weather-website/" property="og:url"/>
 <meta content="Multan Weather Today &amp; 7-Day Forecast | WeatherHub" property="og:title"/>
 <meta content="Check Multan weather today, current temperature, rain chance and 7-day forecast with WeatherHub Live." property="og:description"/>
 <meta content="WeatherHub Live" property="og:site_name"/>
@@ -34,16 +33,16 @@
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "WeatherHub Live",
-  "url": "https://weatherhublive.netlify.app/",
+  "url": "https://waseemchuhan-3676gif.github.io/weather-website/",
   "description": "Current weather conditions and 7-day weather forecasts for cities around the world.",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://weatherhublive.netlify.app/?city={search_term_string}",
+    "target": "https://waseemchuhan-3676gif.github.io/weather-website/?city={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 }
 </script>
-<title>Multan Weather &amp; Fortmanro Weather Today | 7-Day Forecast, AQI</title>
+<title>Pakistan Weather Today | Live Weather &amp; 7-Day Forecast | WeatherHub Live</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ3jWn9s7g8z0gQ6V6d9j5k9j5k9j5k=" rel="stylesheet">
 <style>
@@ -178,18 +177,18 @@ footer{text-align:center;opacity:.65;padding:30px 0 10px;font-size:.85rem}
   "@graph":[
     {
       "@type":"WebPage",
-      "@id":"https://weatherhublive.netlify.app/weather/multan/",
-      "url":"https://weatherhublive.netlify.app/weather/multan/",
+      "@id":"https://waseemchuhan-3676gif.github.io/weather-website/weather/multan/",
+      "url":"https://waseemchuhan-3676gif.github.io/weather-website/weather/multan/",
       "name":"Multan Weather Today & 7-Day Forecast | WeatherHub",
       "description":"Current Multan weather, temperature, humidity, wind, pressure and 7-day weather forecast.",
-      "isPartOf":{"@type":"WebSite","name":"WeatherHub Live","url":"https://weatherhublive.netlify.app/"}
+      "isPartOf":{"@type":"WebSite","name":"WeatherHub Live","url":"https://waseemchuhan-3676gif.github.io/weather-website/"}
     },
     {
       "@type":"BreadcrumbList",
       "itemListElement":[
-        {"@type":"ListItem","position":1,"name":"Home","item":"https://weatherhublive.netlify.app/"},
-        {"@type":"ListItem","position":2,"name":"Pakistan Weather","item":"https://weatherhublive.netlify.app/weather/pakistan/"},
-        {"@type":"ListItem","position":3,"name":"Multan Weather","item":"https://weatherhublive.netlify.app/weather/multan/"}
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://waseemchuhan-3676gif.github.io/weather-website/"},
+        {"@type":"ListItem","position":2,"name":"Pakistan Weather","item":"https://waseemchuhan-3676gif.github.io/weather-website/weather/pakistan/"},
+        {"@type":"ListItem","position":3,"name":"Multan Weather","item":"https://waseemchuhan-3676gif.github.io/weather-website/weather/multan/"}
       ]
     },
     {
@@ -206,9 +205,9 @@ footer{text-align:center;opacity:.65;padding:30px 0 10px;font-size:.85rem}
 </script>
 <script>
 const FORTMANRO_VARIANTS = ["fort manru","fortmanru","fourt manru","fourtmanru","fort manro","fortmanro","fourt manro","fourtmanro","fort munro","fortmunro","fort munroo","fort munru","fort murno","fort monro","fort monru","fort menro","fort menru","fort manroo"];
-function normalizeFortmanroQuery(value){
+function normalizeFort MunroQuery(value){
   const q=(value||"").trim().toLowerCase().replace(/\s+/g," ");
-  if(FORTMANRO_VARIANTS.includes(q) || q.includes("fortmanru") || q.includes("fortmanro") || q.includes("fourtmanru") || q.includes("fourtmanro") || q.includes("fort munro") || q.includes("fort manru")) return "Fortmanro";
+  if(FORTMANRO_VARIANTS.includes(q) || q.includes("fortmanru") || q.includes("fortmanro") || q.includes("fourtmanru") || q.includes("fourtmanro") || q.includes("fort munro") || q.includes("fort manru")) return "Fort Munro";
   return value;
 }
 </script>
@@ -217,13 +216,13 @@ function normalizeFortmanroQuery(value){
   "@context":"https://schema.org",
   "@type":"WebPage",
   "name":"Lahore Weather Today",
-  "url":"https://weatherhublive.netlify.app/lahore-weather.html",
+  "url":"https://waseemchuhan-3676gif.github.io/weather-website/lahore-weather.html",
   "description":"Lahore weather today, current temperature, hourly weather, air quality and 7-day forecast.",
-  "isPartOf":{"@type":"WebSite","name":"WeatherHub Live","url":"https://weatherhublive.netlify.app/"},
+  "isPartOf":{"@type":"WebSite","name":"WeatherHub Live","url":"https://waseemchuhan-3676gif.github.io/weather-website/"},
   "breadcrumb":{"@type":"BreadcrumbList","itemListElement":[
-    {"@type":"ListItem","position":1,"name":"Home","item":"https://weatherhublive.netlify.app/"},
-    {"@type":"ListItem","position":2,"name":"Pakistan Weather","item":"https://weatherhublive.netlify.app/weather/pakistan/"},
-    {"@type":"ListItem","position":3,"name":"Lahore Weather","item":"https://weatherhublive.netlify.app/lahore-weather.html"}
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://waseemchuhan-3676gif.github.io/weather-website/"},
+    {"@type":"ListItem","position":2,"name":"Pakistan Weather","item":"https://waseemchuhan-3676gif.github.io/weather-website/weather/pakistan/"},
+    {"@type":"ListItem","position":3,"name":"Lahore Weather","item":"https://waseemchuhan-3676gif.github.io/weather-website/lahore-weather.html"}
   ]}
 }
 </script>
@@ -271,12 +270,12 @@ function normalizeFortmanroQuery(value){
 <h3>Check Weather by City</h3>
 <p>Search for a city to view its current conditions and forecast. Popular searches include Multan weather, Lahore weather, Karachi weather, Islamabad weather, Faisalabad weather and Fort Munro weather.</p>
 <div class="internal-links">
-<a class="btn secondary" href="/weather/lahore/">Lahore Weather Today</a>
-<a class="btn secondary" href="/weather/multan/">Multan Weather</a>
+<a class="btn secondary" href="/weather-website/weather/lahore/">Lahore Weather Today</a>
+<a class="btn secondary" href="/weather-website/weather/multan/">Multan Weather</a>
 <button class="btn secondary" onclick="openCity('Karachi')">Karachi Weather</button>
 <button class="btn secondary" onclick="openCity('Islamabad')">Islamabad Weather</button>
 <button class="btn secondary" onclick="openCity('Faisalabad')">Faisalabad Weather</button>
-<a class="btn secondary" href="/weather/fort-munro/">Fort Munro Weather</a>
+<a class="btn secondary" href="/weather-website/weather/fort-munro/">Fort Munro Weather</a>
 </div>
 <h3>Why Use WeatherHub Live?</h3>
 <ul>
@@ -387,7 +386,7 @@ function normalizeFortmanroQuery(value){
 <button onclick="openCity('Dera Ghazi Khan')">Dera Ghazi Khan Weather</button>
 <button onclick="openCity('Khanewal')">Khanewal Weather</button>
 <button onclick="openCity('Vehari')">Vehari Weather</button>
-<a href="/weather/multan/">Multan Weather</a><a href="/weather/lahore/">Lahore Weather</a><a href="/weather/fort-munro/">Fort Munro Weather</a>
+<a href="/weather-website/weather/multan/">Multan Weather</a><a href="/weather-website/weather/lahore/">Lahore Weather</a><a href="/weather-website/weather/fort-munro/">Fort Munro Weather</a>
 </div>
 </div>
 </div>
@@ -505,29 +504,35 @@ let map,marker;
 document.querySelectorAll('.nav').forEach(b=>b.addEventListener('click',()=>{showPage(b.dataset.page);if(window.gtag)gtag('event','navigation_click',{page:b.dataset.page});}));
 
 const SEO_CITY_PAGES = {
-  "/weather/multan/": {
+  "/weather-website/weather/multan/": {
     city: "Multan",
     title: "Multan Weather Today | Live Forecast, AQI & 7-Day Weather",
     description: "Check Multan weather today with live temperature, hourly forecast, 7-day weather forecast, air quality, UV index, sunrise and sunset.",
-    h1: "Multan Weather Today"
+    h1: "Multan Weather Today",
+    intro: "Live Multan weather, current conditions, hourly forecast, air quality and 7-day weather forecast.",
+    section: "multan"
   },
-  "/weather/lahore/": {
+  "/weather-website/weather/lahore/": {
     city: "Lahore",
     title: "Lahore Weather Today | Live Forecast, AQI & 7-Day Weather",
     description: "Check Lahore weather today with live temperature, hourly forecast, 7-day weather forecast, air quality, UV index, sunrise and sunset.",
-    h1: "Lahore Weather Today"
+    h1: "Lahore Weather Today",
+    intro: "Live Lahore weather, current conditions, hourly forecast, air quality and 7-day weather forecast.",
+    section: "lahore"
   },
-  "/weather/fort-munro/": {
+  "/weather-website/weather/fort-munro/": {
     city: "Fort Munro",
     title: "Fort Munro Weather Today | Live Forecast, AQI & 7-Day Weather",
     description: "Check Fort Munro weather today with live temperature, 7-day weather forecast, air quality, UV index, sunrise and sunset.",
-    h1: "Fort Munro Weather Today"
+    h1: "Fort Munro Weather Today",
+    intro: "Live Fort Munro weather, current conditions, air quality, hourly forecast and 7-day weather forecast.",
+    section: "fort"
   }
 };
 
 function updateRouteSEO(path){
   const cfg = SEO_CITY_PAGES[path];
-  const base = location.origin;
+  const base = SITE_BASE;
   let title = "Pakistan Weather Today | Live Weather & 7-Day Forecast";
   let description = "Check Pakistan weather today with live temperature, hourly weather, 7-day forecasts, air quality, UV index and updates for cities across Pakistan.";
   let canonical = base + "/";
@@ -535,7 +540,7 @@ function updateRouteSEO(path){
   if(cfg){
     title = cfg.title;
     description = cfg.description;
-    canonical = base + path;
+    canonical = base + path.replace(SITE_BASE, "");
   }
 
   document.title = title;
@@ -581,6 +586,15 @@ function openSEOCityPage(path, push=true){
   if(homeInput) homeInput.value = cfg.city;
 
   clearNotice("weatherNotice");
+  const hero=document.querySelector("#weather .hero");
+  if(hero){
+    const h=hero.querySelector("h1"); if(h) h.textContent=cfg.h1 || (cfg.city+" Weather Today");
+    const p=hero.querySelector("p"); if(p) p.textContent=cfg.intro || "";
+  }
+  const ms=document.getElementById("multanSeo"); if(ms) ms.style.display=cfg.section==="multan"?"block":"none";
+  const lh=document.getElementById("lahoreSeo"); if(lh) lh.style.display=cfg.section==="lahore"?"block":"none";
+  const fm=document.getElementById("fortMunroSeo"); if(fm) fm.style.display=cfg.section==="fort"?"block":"none";
+  const fr=document.getElementById("fortMunroRouteSEO"); if(fr) fr.style.display=cfg.section==="fort"?"block":"none";
   loadRouteCity(cfg.city);
   return true;
 }
@@ -612,7 +626,7 @@ async function loadRouteCity(city){
 }
 
 document.addEventListener("click", function(e){
-  const link = e.target.closest('a[href^="/weather/"]');
+  const link = e.target.closest('a[href^="/weather-website/weather/"]');
   if(!link) return;
   const path = new URL(link.href, location.href).pathname;
   if(SEO_CITY_PAGES[path]){
@@ -821,8 +835,8 @@ function cityCards(filter=""){
  const q=filter.trim().toLowerCase();
  const pakistan=cities.filter(c=>!['United States','United Kingdom','United Arab Emirates','Saudi Arabia','Türkiye','Canada','Australia'].includes(c[1]));
  const filtered=q?pakistan.filter(c=>c[0].toLowerCase().includes(q)||c[1].toLowerCase().includes(q)):pakistan;
- document.getElementById('homeCities').innerHTML=pakistan.slice(0,18).map(c=>`<a class="card city" href="/weather/${slugifyCity(c[0])}/" onclick="event.preventDefault();openCity('${c[0].replace(/'/g,"\'")}')"><i class="fas fa-location-dot"></i><strong>${c[0]}</strong><small>${c[1]}</small></a>`).join('');
- document.getElementById('allCities').innerHTML=filtered.map(c=>`<a class="card city" href="/weather/${slugifyCity(c[0])}/" onclick="event.preventDefault();openCity('${c[0].replace(/'/g,"\'")}')"><i class="fas fa-location-dot"></i><strong>${c[0]}</strong><small>${c[1]}</small></a>`).join('');
+ document.getElementById('homeCities').innerHTML=pakistan.slice(0,18).map(c=>`<a class="card city" href="/weather-website/weather/${slugifyCity(c[0])}/" onclick="event.preventDefault();openCity('${c[0].replace(/'/g,"\'")}')"><i class="fas fa-location-dot"></i><strong>${c[0]}</strong><small>${c[1]}</small></a>`).join('');
+ document.getElementById('allCities').innerHTML=filtered.map(c=>`<a class="card city" href="/weather-website/weather/${slugifyCity(c[0])}/" onclick="event.preventDefault();openCity('${c[0].replace(/'/g,"\'")}')"><i class="fas fa-location-dot"></i><strong>${c[0]}</strong><small>${c[1]}</small></a>`).join('');
 }
 async function useLocation(){
  if(!navigator.geolocation)return setNotice('homeNotice','Location is not supported by this browser.');
@@ -850,38 +864,44 @@ document.getElementById('cityInputWeather').addEventListener('keypress',e=>{if(e
 const cityDirectorySearch=document.getElementById('cityDirectorySearch');
 if(cityDirectorySearch) cityDirectorySearch.addEventListener('input',e=>cityCards(e.target.value));
 
-function applyCityRouteSEO(){
-  const path=window.location.pathname.replace(/\/+$/,'');
-  const map={
-    '/weather/multan':{name:'Multan',title:'Multan Weather Today & 7-Day Forecast | WeatherHub Live',description:'Multan weather today with live temperature, humidity, wind, UV index, air quality, hourly weather and a 7-day forecast.',intro:'Live Multan weather, current conditions, hourly forecast, air quality and 7-day weather forecast.',section:'multan'},
-    '/weather/lahore':{name:'Lahore',title:'Lahore Weather Today & 7-Day Forecast | WeatherHub Live',description:'Lahore weather today with live temperature, humidity, wind, UV index, air quality, hourly weather and a 7-day forecast.',intro:'Live Lahore weather, current conditions, hourly forecast, air quality and 7-day weather forecast.',section:'lahore'},
-    '/weather/fort-munro':{name:'Fort Munro',title:'Fort Munro Weather Today & 7-Day Forecast | WeatherHub Live',description:'Fort Munro weather today with live temperature, humidity, wind, UV index, air quality, hourly weather and a 7-day forecast.',intro:'Live Fort Munro weather, current conditions, air quality, hourly forecast and 7-day weather forecast.',section:'fort'}
-  };
-  const cfg=map[path];
-  if(!cfg){ document.title='Pakistan Weather Today | Live Weather & 7-Day Forecast | WeatherHub Live'; setMeta('description','Check Pakistan weather today with live temperature, hourly weather, air quality, UV index and 7-day forecasts for Multan, Lahore, Fort Munro and 700+ cities.'); setCanonical(window.location.origin+'/'); return; }
-  document.title=cfg.title; setMeta('description',cfg.description); setCanonical(window.location.origin+path+'/');
-  setProp('og:title',cfg.title); setProp('og:description',cfg.description); setProp('og:url',window.location.origin+path+'/');
-  const tw=document.querySelector('meta[name="twitter:title"]'); if(tw) tw.content=cfg.title; const td=document.querySelector('meta[name="twitter:description"]'); if(td) td.content=cfg.description;
-  showPage('weather');
-  const input=document.getElementById('cityInputWeather'); if(input) input.value=cfg.name;
-  const hero=document.querySelector('#weather .hero'); if(hero){hero.querySelector('h1').textContent=cfg.name+' Weather Today'; hero.querySelector('p').textContent=cfg.intro;}
-  const ms=document.getElementById('multanSeo'); if(ms) ms.style.display=cfg.section==='multan'?'block':'none';
-  const lh=document.getElementById('lahoreSeo'); if(lh) lh.style.display=cfg.section==='lahore'?'block':'none';
-  const fm=document.getElementById('fortMunroSeo'); if(fm) fm.style.display=cfg.section==='fort'?'block':'none'; const fr=document.getElementById('fortMunroRouteSEO'); if(fr) fr.style.display=cfg.section==='fort'?'block':'none';
-  loadWeatherForRoute(cfg.name);
+const SITE_BASE = 'https://waseemchuhan-3676gif.github.io/weather-website';
+
+function slugifyCity(name){
+  return String(name || '')
+    .trim()
+    .toLowerCase()
+    .replace(/&/g,'and')
+    .replace(/[^a-z0-9]+/g,'-')
+    .replace(/^-+|-+$/g,'');
 }
-async function loadWeatherForRoute(city){
-  loading(true); clearNotice('weatherNotice');
-  try{
-    const x=await getCityWeather(city);
-    document.getElementById('weatherResult').innerHTML=renderWeather(x.g,x.w,x.aq);
-    const key=city.toLowerCase();
-    if(key==='multan'){const h=document.getElementById('multanHourly');if(h)h.innerHTML=renderMultanHourly(x.w);const a=document.getElementById('multanAirQuality');if(a)a.innerHTML=renderAirQuality(x.aq);}
-    if(key==='lahore'){const h=document.getElementById('lahoreHourly');if(h)h.innerHTML=renderMultanHourly(x.w);const a=document.getElementById('lahoreAirQuality');if(a)a.innerHTML=renderAirQuality(x.aq);}
-    if(window.gtag) gtag('event','city_weather_view',{city:city,page_path:window.location.pathname});
-  }catch(e){setNotice('weatherNotice',e.message)}finally{loading(false)}
+function setMeta(name, content){
+  let el=document.querySelector(`meta[name="${name}"]`);
+  if(!el){ el=document.createElement('meta'); el.name=name; document.head.appendChild(el); }
+  el.content=content;
 }
-cityCards(); if(!/^\/weather\/(multan|lahore|fort-munro)\/?$/.test(window.location.pathname)){loadHome('Multan');showPage('weather');} applyCityRouteSEO();
+function setProp(prop, content){
+  let el=document.querySelector(`meta[property="${prop}"]`);
+  if(!el){ el=document.createElement('meta'); el.setAttribute('property',prop); document.head.appendChild(el); }
+  el.content=content;
+}
+function setCanonical(url){
+  let el=document.querySelector('link[rel="canonical"]');
+  if(!el){ el=document.createElement('link'); el.rel='canonical'; document.head.appendChild(el); }
+  el.href=url;
+}
+
+cityCards();
+
+const initialPath = window.location.pathname.replace(/\\/+$/, "") + "/";
+const routePath = initialPath === SITE_BASE + "/" ? "/" : initialPath;
+
+if(SEO_CITY_PAGES[routePath]){
+  openSEOCityPage(routePath, false);
+}else{
+  updateRouteSEO("/");
+  loadHome("Multan");
+  showPage("home");
+}
 </script>
 </body>
 </html>
