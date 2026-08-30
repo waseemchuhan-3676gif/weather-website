@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://weatherhublive.netlify.app/sitemap.xml
+Sitemap: https://waseemchuhan-3676gif.github.io/weather-website/sitemap.xml
